@@ -1,0 +1,84 @@
+/* Custom scrollbar for sidebar */
+.sidebar-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: rgba(175, 190, 255, 0.05);
+  border-radius: 10px;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: rgba(175, 190, 255, 0.3);
+  border-radius: 10px;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(175, 190, 255, 0.6);
+}
+
+/* Typography Overrides */
+.prose-headings {
+  scroll-margin-top: 100px; /* Offset for fixed header */
+}
+
+/* Active Nav Link Styles */
+.nav-active {
+  color: #afbeff !important;
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(175, 190, 255, 0.6), 0 0 20px rgba(175, 190, 255, 0.3);
+}
+
+/* Collapsible Sidebar Styles */
+.sidebar-group.collapsed ul {
+  max-height: 0 !important;
+  opacity: 0;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  pointer-events: none;
+  border-color: transparent;
+}
+.sidebar-group.collapsed .chevron {
+  transform: rotate(-90deg);
+}
+.sidebar-group ul {
+  max-height: 500px;
+  opacity: 1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+.chevron {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Mobile Drawer */
+.mobile-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(21, 38, 113, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.mobile-drawer-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  max-width: 80vw;
+  height: 100vh;
+  background: linear-gradient(180deg, #152671 0%, #1b2c78 40%, #1e3082 100%);
+  z-index: 201;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-right: 1px solid rgba(175, 190, 255, 0.15);
+}
+.mobile-drawer.open {
+  transform: translateX(0);
+}

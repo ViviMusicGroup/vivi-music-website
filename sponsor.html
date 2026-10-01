@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="dark scroll-smooth" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>VIVI Music · Sponsor</title>
+
+  <!-- Google Fonts: Sora, Geist, Material Symbols -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Geist:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS v3 -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#ffffff",
+            "surface": "rgba(175, 190, 255, 0.15)",
+            "surface-dim": "rgba(175, 190, 255, 0.1)",
+            "surface-bright": "rgba(175, 190, 255, 0.25)",
+            "surface-container-lowest": "rgba(175, 190, 255, 0.05)",
+            "surface-container-low": "rgba(175, 190, 255, 0.08)",
+            "surface-container": "rgba(175, 190, 255, 0.12)",
+            "surface-container-high": "rgba(175, 190, 255, 0.18)",
+            "surface-container-highest": "rgba(175, 190, 255, 0.25)",
+            "on-surface": "#e5e2e1",
+            "on-surface-variant": "#c2c6d6",
+            "vivi": {
+              blue: '#afbeff',
+              purple: '#5669bd',
+            },
+            "outline-variant": "#424754",
+            "obsidian-deep": "rgba(175, 190, 255, 0.05)",
+            "obsidian-border": "rgba(175, 190, 255, 0.2)",
+            "background": "#152671",
+            "on-background": "#e5e2e1",
+            "vivid-glow": "rgba(175, 190, 255, 0.15)",
+          },
+          fontFamily: {
+            sora: ['Sora', 'sans-serif'],
+            geist: ['Geist', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="index.css" rel="stylesheet">
+  <script src="donation.js" defer></script>
+</head>
+
+<body class="bg-transparent text-on-surface font-sora selection:bg-vivi-blue selection:text-white overflow-x-hidden">
+
+  <!-- Fixed background gradient element to match Helium's layout -->
+  <div id="page-background"></div>
+
+  <!-- BEGIN: Navigation -->
+  <nav id="top-navbar"
+    class="fixed top-0 w-full z-[100] py-5 px-6 md:px-12 flex justify-between items-center transition-all duration-300 ease-in-out transform -translate-y-full opacity-0 animate-nav"
+    data-purpose="TopNavBar">
+    <div class="flex items-center gap-2">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="appicon/vivi.png" alt="VIVI Music Logo" class="w-8 h-8 rounded-[8px] object-cover invert" decoding="async" />
+        <span class="text-xl font-bold tracking-tight text-white font-sora">VIVI Music</span>
+      </a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <a href="index.html"
+        class="flex items-center gap-2 border border-[#afbeff]/30 hover:bg-[#afbeff]/15 text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors">
+        <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+        Back to Home
+      </a>
+    </div>
+  </nav>
+  <!-- END: Navigation -->
+
+  <!-- BEGIN: Hero Header -->
+  <main class="relative min-h-[45vh] pt-40 pb-12 overflow-hidden flex flex-col items-center justify-center">
+
+    <section class="container mx-auto px-6 text-center relative z-10">
+      <div
+        class="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-[#afbeff]/20 bg-[#afbeff]/10 text-[10px] font-bold tracking-[0.2em] text-[#afbeff] uppercase mb-6">
+        Open Source Support
+      </div>
+      <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white mb-4">
+        Support VIVI Music
+      </h1>
+      <p class="text-on-surface-variant font-geist text-base md:text-lg max-w-xl mx-auto">
+        Help us maintain the application, fund API costs, and build the future of fluid audio ecosystems.
+      </p>
+    </section>
+  </main>
+  <!-- END: Hero Header -->
+
+  <!-- BEGIN: Ways to Sponsor Section -->
+  <section class="container mx-auto px-6 max-w-3xl pb-24 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Ko-fi -->
+      <div class="glass-card flex flex-col justify-between p-8 rounded-3xl bg-[#afbeff]/10 border border-[#afbeff]/15 hover:border-[#afbeff]/30 hover:bg-[#afbeff]/15 transition-all duration-300 min-h-[380px]">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-6">
+            <span class="material-symbols-outlined text-2xl">local_cafe</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-4">Ko-fi</h3>
+          <p class="text-on-surface-variant text-sm mb-6 font-geist leading-relaxed">
+            Support VIVI Music development directly via Ko-fi. You can send a one-time tip or set up a monthly subscription.
+          </p>
+        </div>
+        <div>
+          <a href="https://ko-fi.com/vividhpashokan" target="_blank" rel="noopener noreferrer"
+            class="block w-full text-center bg-white text-black px-6 py-3.5 rounded-full text-sm font-bold hover:bg-white/85 hover:scale-[1.02] transition-all active:scale-95 shadow-md flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">favorite</span>
+            Support on Ko-fi
+          </a>
+        </div>
+      </div>
+
+      <!-- UPI -->
+      <div class="glass-card flex flex-col justify-between p-8 rounded-3xl bg-[#afbeff]/10 border border-[#afbeff]/15 hover:border-[#afbeff]/30 hover:bg-[#afbeff]/15 transition-all duration-300 min-h-[380px]">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-[#afbeff] mb-6">
+            <span class="material-symbols-outlined text-2xl">qr_code_2</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-4">UPI Transfer</h3>
+          <p class="text-on-surface-variant text-sm mb-6 font-geist leading-relaxed">
+            If you are based in India, you can scan and pay directly using any UPI app (GPay, PhonePe, Paytm, BHIM, etc.).
+          </p>
+          
+          <div class="flex items-center justify-between bg-black/30 border border-white/5 rounded-2xl p-4 mb-6 select-all">
+            <code class="text-[#afbeff] font-semibold text-sm font-geist">vividhpashokan@axl</code>
+            <span class="text-xs text-on-surface-variant/50 font-geist uppercase tracking-widest hidden sm:inline">UPI ID</span>
+          </div>
+        </div>
+        <div>
+          <button id="copy-upi"
+            class="w-full bg-[#afbeff]/20 border border-[#afbeff]/15 text-white px-6 py-3.5 rounded-full text-sm font-bold hover:bg-[#afbeff]/25 transition-all active:scale-95 shadow-md flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-[18px]" id="copy-icon">content_copy</span>
+            <span id="copy-text">Copy UPI ID</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END: Ways to Sponsor Section -->
+
+  <!-- BEGIN: Sponsor Wall Section -->
+  <section id="sponsor-wall" class="container mx-auto px-6 max-w-5xl pb-24 relative z-10">
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-[#afbeff]/20 bg-[#afbeff]/10 text-[10px] font-bold tracking-[0.2em] text-[#afbeff] uppercase mb-6">
+        Leaderboard
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
+        Top Supporters
+      </h2>
+      <p class="text-on-surface-variant font-geist text-sm md:text-base max-w-xl mx-auto">
+        Supporters who contributed to VIVI Music's development.
+      </p>
+    </div>
+
+    <!-- Top Leaderboard Supporters -->
+    <div id="leaderboard-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 border-t border-l border-white/10 mb-24 justify-center">
+      <!-- Dynamic Leaderboard Cards -->
+    </div>
+
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-[#afbeff]/20 bg-[#afbeff]/10 text-[10px] font-bold tracking-[0.2em] text-[#afbeff] uppercase mb-6">
+        Contributions Feed
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
+        Recent Donations
+      </h2>
+      <p class="text-on-surface-variant font-geist text-sm md:text-base max-w-xl mx-auto">
+        Recent messages and support from our community.
+      </p>
+    </div>
+
+    <!-- Recent Supporters Grid -->
+    <div id="recent-supporters-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-white/10">
+      <!-- Dynamic Supporter Feed Cards -->
+    </div>
+  </section>
+  <!-- END: Sponsor Wall Section -->
+
+  <!-- BEGIN: Footer -->
+  <footer class="py-8 border-t border-white/5 relative z-10">
+    <div class="container mx-auto px-6 max-w-5xl flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-body text-on-surface-variant/50">
+      <div class="flex items-center gap-4">
+        <p>© 2026 VIVI Music. All rights reserved.</p>
+        <span class="text-white/10">|</span>
+        <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+        <span class="text-white/10">|</span>
+        <a href="terms.html" class="hover:text-white transition-colors">Terms &amp; Conditions</a>
+      </div>
+      <p class="flex items-center gap-1 flex-wrap justify-center md:justify-end">
+        <span>Made by</span>
+        <a href="https://github.com/vivizzz007" target="_blank"
+          class="text-on-surface-variant hover:text-white transition-colors font-semibold">Vividh P Ashokan</a>
+        <span class="text-on-surface-variant/30">&amp;</span>
+        <span class="text-on-surface-variant font-semibold">Sharon Thomas</span>
+      </p>
+    </div>
+  </footer>
+  <!-- END: Footer -->
+
+  <!-- Clipboard & Scroll Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Reveal navbar animation
+      const navbar = document.querySelector('nav[data-purpose="TopNavBar"]');
+      if (navbar) {
+        navbar.classList.remove('opacity-0', '-translate-y-full');
+        navbar.classList.add('opacity-100', 'translate-y-0');
+      }
+
+      // Copy UPI script
+      const copyBtn = document.getElementById('copy-upi');
+      const copyText = document.getElementById('copy-text');
+      const copyIcon = document.getElementById('copy-icon');
+      const upiId = 'vividhpashokan@axl';
+
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(upiId).then(() => {
+          copyText.textContent = 'Copied!';
+          copyIcon.textContent = 'check';
+          copyBtn.classList.remove('bg-[#afbeff]/20', 'border-[#afbeff]/15', 'text-white');
+          copyBtn.classList.add('bg-green-500/20', 'border-green-500/30', 'text-green-400');
+          
+          setTimeout(() => {
+            copyText.textContent = 'Copy UPI ID';
+            copyIcon.textContent = 'content_copy';
+            copyBtn.classList.remove('bg-green-500/20', 'border-green-500/30', 'text-green-400');
+            copyBtn.classList.add('bg-[#afbeff]/20', 'border-[#afbeff]/15', 'text-white');
+          }, 2000);
+        }).catch(err => {
+          console.error('Failed to copy text: ', err);
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html class="dark scroll-smooth" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Terms & Conditions - VIVI Music</title>
+
+  <!-- Google Fonts: Sora, Geist, Material Symbols -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Geist:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS v3 -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#ffffff",
+            "surface": "rgba(175, 190, 255, 0.15)",
+            "surface-dim": "rgba(175, 190, 255, 0.1)",
+            "surface-bright": "rgba(175, 190, 255, 0.25)",
+            "surface-container-lowest": "rgba(175, 190, 255, 0.05)",
+            "surface-container-low": "rgba(175, 190, 255, 0.08)",
+            "surface-container": "rgba(175, 190, 255, 0.12)",
+            "surface-container-high": "rgba(175, 190, 255, 0.18)",
+            "surface-container-highest": "rgba(175, 190, 255, 0.25)",
+            "on-surface": "#e5e2e1",
+            "on-surface-variant": "#c2c6d6",
+            "vivi": {
+              blue: '#afbeff',
+              purple: '#5669bd',
+            },
+            "outline-variant": "#424754",
+            "obsidian-deep": "rgba(175, 190, 255, 0.05)",
+            "obsidian-border": "rgba(175, 190, 255, 0.2)",
+            "background": "#152671",
+            "on-background": "#e5e2e1",
+            "vivid-glow": "rgba(175, 190, 255, 0.15)",
+          },
+          fontFamily: {
+            sora: ['Sora', 'sans-serif'],
+            geist: ['Geist', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="index.css" rel="stylesheet">
+</head>
+
+<body class="bg-transparent text-on-surface font-sora selection:bg-vivi-blue selection:text-white overflow-x-hidden">
+
+  <!-- Fixed background gradient element to match Helium's layout -->
+  <div id="page-background"></div>
+
+  <!-- BEGIN: Navigation -->
+  <nav id="top-navbar"
+    class="fixed top-0 w-full z-[100] py-5 px-6 md:px-12 flex justify-between items-center transition-all duration-300 ease-in-out transform -translate-y-full opacity-0 animate-nav"
+    data-purpose="TopNavBar">
+    <div class="flex items-center gap-2">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="appicon/vivi.png" alt="VIVI Music Logo" class="w-8 h-8 rounded-[8px] object-cover invert" decoding="async" />
+        <span class="text-xl font-bold tracking-tight text-white font-sora">VIVI Music</span>
+      </a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <a href="index.html"
+        class="flex items-center gap-2 border border-[#afbeff]/30 hover:bg-[#afbeff]/15 text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors">
+        <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+        Back to Home
+      </a>
+    </div>
+  </nav>
+  <!-- END: Navigation -->
+
+  <!-- BEGIN: Hero Header -->
+  <main class="relative min-h-[40vh] pt-40 pb-16 overflow-hidden flex flex-col items-center justify-center">
+
+    <section class="container mx-auto px-6 text-center relative z-10">
+      <div
+        class="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-[#afbeff]/20 bg-[#afbeff]/10 text-[10px] font-bold tracking-[0.2em] text-[#afbeff] uppercase mb-6">
+        Terms of Service
+      </div>
+      <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white mb-4">
+        Terms &amp; Conditions
+      </h1>
+      <p class="text-on-surface-variant font-geist text-base md:text-lg max-w-xl mx-auto">
+        Governed under the GNU GPL-3.0 License, securing your right to share, edit, and build upon this open-source application.
+      </p>
+    </section>
+  </main>
+  <!-- END: Hero Header -->
+
+  <!-- BEGIN: Terms Content Section -->
+  <section class="w-full max-w-4xl mx-auto px-6 pb-32">
+      
+      <!-- GPL-3.0 Banner -->
+      <div class="flex flex-col md:flex-row items-start gap-4 pb-8 border-b border-white/10 mb-8">
+        <div class="p-2 rounded-xl bg-white/5 border border-white/10 text-white flex items-center justify-center">
+          <span class="material-symbols-outlined text-2xl">gavel</span>
+        </div>
+        <div>
+          <h4 class="font-bold text-white text-lg mb-1">GNU GPL-3.0 Open-Source License</h4>
+          <p class="text-sm text-on-surface-variant font-geist leading-relaxed">
+            VIVI Music is released as a 100% free and open-source software under the terms of the GNU General Public License version 3.0. You are granted explicit freedoms to copy, redistribute, modify, and run the software.
+          </p>
+        </div>
+      </div>
+
+      <div class="space-y-8 font-geist">
+        
+        <!-- Section 1 -->
+        <div class="space-y-4 pb-8 border-b border-white/10">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-vivi-blue text-2xl">workspace_premium</span>
+            <h2 class="text-xl md:text-2xl font-bold text-white font-sora">1. Open-Source Freedoms</h2>
+          </div>
+          <p class="text-on-surface-variant text-base leading-relaxed">
+            As a user or developer of VIVI Music, the GPL-3.0 License guarantees you the following rights:
+          </p>
+          <ul class="list-none space-y-3 text-sm text-on-surface-variant pl-2">
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-green-400 text-[18px] mt-0.5">check_circle</span>
+              <span><strong>The Freedom to Run:</strong> You can install and use the app on any supported device for personal, non-commercial purposes.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-green-400 text-[18px] mt-0.5">check_circle</span>
+              <span><strong>The Freedom to Study:</strong> You can inspect our public source code, analyze its internal algorithms, and verify its behaviors.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-green-400 text-[18px] mt-0.5">check_circle</span>
+              <span><strong>The Freedom to Share & Modify:</strong> You can fork the codebase, adapt the player's styling or core engine, and distribute copies of your modifications.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="space-y-4 pb-8 border-b border-white/10">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-vivi-purple text-2xl">copy_all</span>
+            <h2 class="text-xl md:text-2xl font-bold text-white font-sora">2. Copyleft Conditions (Share-Alike)</h2>
+          </div>
+          <p class="text-on-surface-variant text-base leading-relaxed">
+            In alignment with the GNU copyleft principles, if you modify and distribute forks of VIVI Music:
+          </p>
+          <ul class="list-none space-y-3 text-sm text-on-surface-variant pl-2">
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-vivi-purple text-[18px] mt-0.5">info</span>
+              <span>Your modified project **must also be released under the same GPL-3.0 license** style. You cannot turn VIVI Music into closed-source or proprietary software.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-vivi-purple text-[18px] mt-0.5">info</span>
+              <span>You must offer the full source code of your modified version publicly, indicating the changes made, and giving explicit credit to the original creator (**VIVIDH P ASHOKAN**).</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="space-y-4 pb-8 border-b border-white/10">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-vivi-blue text-2xl">warning</span>
+            <h2 class="text-xl md:text-2xl font-bold text-white font-sora">3. Absolute Disclaimer of Warranty ("AS IS")</h2>
+          </div>
+          <p class="text-on-surface-variant text-base leading-relaxed font-semibold text-white">
+            THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+          </p>
+          <p class="text-on-surface-variant text-base leading-relaxed">
+            In accordance with Sections 15, 16, and 17 of the GNU General Public License v3.0, the developer (**VIVIDH P ASHOKAN**) provides no guarantees regarding:
+          </p>
+          <ul class="list-none space-y-3 text-sm text-on-surface-variant pl-2">
+            <li class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-red-400 text-[18px]">close</span>
+              The continuous compatibility of YouTube streaming endpoints or API interfaces.
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-red-400 text-[18px]">close</span>
+              Fitness for any specific purpose, or merchantability of the application.
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-red-400 text-[18px]">close</span>
+              The absence of occasional bugs, playback drops, or device compatibility issues.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="space-y-4 pb-8 border-b border-white/10">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-vivi-purple text-2xl">safety_check</span>
+            <h2 class="text-xl md:text-2xl font-bold text-white font-sora">4. Limitation of Liability</h2>
+          </div>
+          <p class="text-on-surface-variant text-base leading-relaxed">
+            Except to the extent required by applicable law, the author of VIVI Music will not be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort arising in any way out of the use of this software, even if advised of the possibility of such damage.
+          </p>
+        </div>
+
+        <!-- Section 5 -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-vivi-blue text-2xl">campaign</span>
+            <h2 class="text-xl md:text-2xl font-bold text-white font-sora">5. Streaming & Personal Usage Policy</h2>
+          </div>
+          <p class="text-on-surface-variant text-base leading-relaxed">
+            VIVI Music streams audio publicly indexed from external platforms. The application is designed strictly for **personal, non-commercial use**. 
+          </p>
+          <p class="text-on-surface-variant text-base leading-relaxed">
+            Users must respect the copyrights and terms of services of the third-party platforms from which the audio is sourced. VIVI Music does not host any media files itself, and the author does not assume responsibility for user-initiated content queries.
+          </p>
+        </div>
+
+      </div>
+  </section>
+  <!-- END: Terms Content Section -->
+
+  <!-- BEGIN: Footer -->
+  <footer class="border-t border-white/5 bg-[#152671]/40 backdrop-blur-md pt-16 pb-8 px-6 md:px-12" data-purpose="Footer">
+    <div class="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+      <!-- Logo & Description -->
+      <div class="col-span-1 flex flex-col gap-6">
+        <div class="flex items-center gap-3">
+          <img src="appicon/vivi.png" alt="VIVI Music Logo" class="w-8 h-8 rounded-[8px] object-cover invert" loading="lazy" decoding="async" />
+          <span class="text-lg font-bold tracking-tight text-white">VIVI Music</span>
+        </div>
+        <p class="text-on-surface-variant font-geist text-sm leading-relaxed max-w-xs pr-4">
+          Crafting the next generation of open-source music experiences. Beautiful, fast, and focused on you.
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 class="font-bold mb-6 text-base text-white tracking-tight">Product</h4>
+        <ul class="space-y-4 text-sm text-on-surface-variant font-geist">
+          <li><a class="hover:text-white transition-colors" href="index.html#features">Features</a></li>
+          <li><a class="hover:text-white transition-colors" href="https://github.com/vivizzz007/vivi-music/releases">Download</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold mb-6 text-base text-white tracking-tight">Community</h4>
+        <ul class="space-y-4 text-sm text-on-surface-variant font-geist">
+          <li><a class="hover:text-white transition-colors" href="https://github.com/vivizzz007/vivi-music" target="_blank">GitHub Repository</a></li>
+          <li><a class="hover:text-white transition-colors" href="https://t.me/vivimusicapp" target="_blank">Telegram Group</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold mb-6 text-base text-white tracking-tight">Legal</h4>
+        <ul class="space-y-4 text-sm text-on-surface-variant font-geist">
+          <li><a class="hover:text-white transition-colors" href="privacy.html">Privacy Policy</a></li>
+          <li><a class="hover:text-white transition-colors" href="terms.html">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div
+      class="container mx-auto max-w-7xl pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-geist text-on-surface-variant/50">
+      <p>© 2026 VIVI Music. All rights reserved.</p>
+      <p class="flex items-center gap-1 flex-wrap justify-center md:justify-end">
+        <span>Made by</span>
+        <a href="https://github.com/vivizzz007" target="_blank"
+          class="text-on-surface-variant hover:text-white transition-colors font-semibold">Vividh P Ashokan</a>
+        <span class="text-on-surface-variant/30">&amp;</span>
+        <span class="text-on-surface-variant font-semibold">Sharon Thomas</span>
+      </p>
+    </div>
+  </footer>
+  <!-- END: Footer -->
+
+</body>
+
+</html>

@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html class="dark" lang="en" style="scroll-behavior: smooth;">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>VIVI Music | Open Source Ad-Free YouTube Music Client</title>
+  <meta name="description"
+    content="An elegant, open-source music player designed to match your personal aesthetic. Enjoy seamless background playback, real-time synced lyrics, and high-fidelity streaming from YouTube Music.">
+  <meta name="keywords"
+    content="vivi music, open source music player, youtube music client, ad-free music player, android music player, synced lyrics">
+  <meta name="theme-color" content="#152671">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vivimusicweb.com/">
+  <meta property="og:title" content="VIVI Music | Open Source Ad-Free YouTube Music Client">
+  <meta property="og:description"
+    content="An elegant, open-source music player designed to match your personal aesthetic. Enjoy seamless background playback, real-time synced lyrics, and high-fidelity streaming from YouTube Music.">
+  <meta property="og:image"
+    content="https://raw.githubusercontent.com/vivizzz007/vivi-music/main/fastlane/metadata/android/en-US/images/featureGraphic.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://vivimusicweb.com/">
+  <meta property="twitter:title" content="VIVI Music | Open Source Ad-Free YouTube Music Client">
+  <meta property="twitter:description"
+    content="An elegant, open-source music player designed to match your personal aesthetic. Enjoy seamless background playback, real-time synced lyrics, and high-fidelity streaming from YouTube Music.">
+  <meta property="twitter:image"
+    content="https://raw.githubusercontent.com/vivizzz007/vivi-music/main/fastlane/metadata/android/en-US/images/featureGraphic.png">
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" href="appicon/vivi.png">
+  <link rel="apple-touch-icon" href="appicon/vivi.png">
+
+  <!-- Google Fonts: Sora, Geist, Material Symbols -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Geist:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS v3 -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#ffffff",
+            "surface": "rgba(175, 190, 255, 0.15)",
+            "surface-dim": "rgba(175, 190, 255, 0.1)",
+            "surface-bright": "rgba(175, 190, 255, 0.25)",
+            "surface-container-lowest": "rgba(175, 190, 255, 0.05)",
+            "surface-container-low": "rgba(175, 190, 255, 0.08)",
+            "surface-container": "rgba(175, 190, 255, 0.12)",
+            "surface-container-high": "rgba(175, 190, 255, 0.18)",
+            "surface-container-highest": "rgba(175, 190, 255, 0.25)",
+            "on-surface": "#e5e2e1",
+            "on-surface-variant": "#c2c6d6",
+            "vivi": {
+              blue: '#afbeff',
+              purple: '#5669bd',
+            },
+            "on-tertiary-fixed-variant": "#6900b3",
+            "on-primary-fixed": "#001a42",
+            "primary-container": "#4d8eff",
+            "outline-variant": "#424754",
+            "obsidian-deep": "#050505",
+            "on-tertiary-container": "#400071",
+            "on-tertiary": "#490080",
+            "on-error": "#690005",
+            "outline": "#8c909f",
+            "on-primary-fixed-variant": "#004395",
+            "error": "#ffb4ab",
+            "tertiary-container": "#b76dff",
+            "obsidian-border": "#262626",
+            "tertiary-fixed": "#f0dbff",
+            "on-secondary-container": "#b4b5b5",
+            "background": "#152671",
+            "tertiary-fixed-dim": "#ddb7ff",
+            "on-background": "#e5e2e1",
+            "secondary-fixed-dim": "#c6c6c7",
+            "on-secondary-fixed": "#1a1c1c",
+            "on-tertiary-fixed": "#2c0051",
+            "on-primary": "#002e6a",
+            "inverse-primary": "#005ac2",
+            "on-secondary-fixed-variant": "#454747",
+            "surface-tint": "#adc6ff",
+            "inverse-surface": "#e5e2e1",
+            "error-container": "#93000a",
+            "primary-fixed-dim": "#adc6ff",
+            "on-primary-container": "#00285d",
+            "secondary": "#c6c6c7",
+            "primary-fixed": "#d8e2ff",
+            "on-secondary": "#2f3131",
+            "vivid-glow": "rgba(175, 190, 255, 0.15)",
+            "secondary-fixed": "#e2e2e2",
+            "tertiary": "#ddb7ff",
+            "secondary-container": "#454747",
+            "obsidian-surface": "#171717",
+            "inverse-on-surface": "#313030",
+            "on-error-container": "#ffdad6",
+            "surface-variant": "#353534"
+          },
+          fontFamily: {
+            sora: ['Sora', 'sans-serif'],
+            'label-sm': ["Geist"],
+            'display-lg-mobile': ["Sora"],
+            'body-md': ["Geist"],
+            'label-md': ["Geist"],
+            'headline-xl': ["Sora"],
+            'display-lg': ["Sora"],
+            'body-lg': ["Geist"],
+            'headline-lg': ["Sora"],
+            instrument: ['"Instrument Sans"', 'sans-serif']
+          },
+          fontSize: {
+            "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+            "display-lg-mobile": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-md": ["16px", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-xl": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "display-lg": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          },
+          spacing: {
+            "container-max": "1280px",
+            "margin-mobile": "20px",
+            "gutter": "24px",
+            "margin-desktop": "64px",
+            "unit": "8px"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Custom Animations and styles -->
+  <link href="index.css" rel="stylesheet">
+</head>
+
+<body class="bg-transparent text-on-surface font-sora selection:bg-vivi-blue selection:text-white overflow-x-hidden">
+
+  <!-- Fixed background gradient element to match Helium's layout -->
+  <div id="page-background"></div>
+
+  <!-- BEGIN: Navigation -->
+  <nav id="top-navbar"
+    class="fixed top-0 w-full z-[100] py-5 px-6 md:px-12 flex justify-between items-center transition-all duration-300 ease-in-out transform -translate-y-full opacity-0 animate-nav"
+    data-purpose="TopNavBar">
+    <div class="flex items-center gap-2">
+      <a href="#home" class="flex items-center gap-2">
+        <img src="appicon/vivi.png" alt="VIVI Music Logo" class="w-8 h-8 rounded-[8px] object-cover invert"
+          decoding="async" />
+        <span class="text-xl font-bold tracking-tight text-white">VIVI Music</span>
+      </a>
+    </div>
+
+    <!-- Right Side Actions & Mobile Toggle -->
+    <div class="flex items-center gap-8">
+      <!-- Desktop Menu grouped next to download -->
+      <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a class="nav-link" href="#faq">FAQ</a>
+        <a class="nav-link" href="sponsor.html">Sponsor</a>
+        <a class="nav-link" href="https://github.com/vivizzz007/vivi-music" target="_blank">GitHub</a>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button
+          class="trigger-download-modal hidden sm:inline-block bg-white text-black px-6 py-2.5 rounded-full text-sm font-bold hover:bg-white/85 transition-colors text-center shadow-md">
+          Download
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" aria-label="Open Navigation Menu"
+          class="md:hidden text-white focus:outline-none flex items-center justify-center gap-1.5 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm font-medium hover:bg-white/10 transition-colors select-none">
+          <span>Links</span>
+          <span class="material-symbols-outlined text-[18px] transition-transform duration-200"
+            id="mobile-menu-chevron">expand_more</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu"
+      class="absolute right-6 md:right-12 top-full mt-2 z-[90] flex flex-col items-end gap-5 transform -translate-y-4 opacity-0 transition-all duration-300 pointer-events-none md:hidden">
+      <a class="mobile-menu-link text-[18px] font-medium text-white hover:opacity-80 transition-opacity select-none"
+        href="#faq">FAQ</a>
+      <a class="mobile-menu-link text-[18px] font-medium text-white hover:opacity-80 transition-opacity select-none"
+        href="sponsor.html">Sponsor</a>
+      <a class="mobile-menu-link text-[18px] font-medium text-white hover:opacity-80 transition-opacity flex items-center gap-1 select-none"
+        href="https://github.com/vivizzz007/vivi-music" target="_blank">
+        GitHub
+        <span class="material-symbols-outlined text-[16px] opacity-65">open_in_new</span>
+      </a>
+      <button
+        class="trigger-download-modal flex items-center justify-center gap-2 bg-white text-black px-5 py-2.5 rounded-full text-sm font-bold hover:bg-white/85 transition-colors shadow-md select-none">
+        <span class="material-symbols-outlined text-[18px]">download</span>
+        Download
+      </button>
+    </div>
+  </nav>
+  <!-- END: Navigation -->
+
+  <main id="home" class="relative min-h-screen pt-32 pb-20 overflow-hidden">
+    <!-- Hero Text Content -->
+    <section class="container mx-auto px-6 text-center relative z-10" data-purpose="hero-content">
+      <!-- Centered VIVI Music logo like Helium star -->
+      <img src="appicon/vivi.png" alt="VIVI Music Logo" class="w-16 h-16 mx-auto mb-8 invert" decoding="async" />
+
+      <h1
+        class="text-4xl md:text-[48px] font-medium mb-6 tracking-tight md:tracking-[-0.04em] text-white font-geist leading-[1.1] max-w-[660px] mx-auto flex items-center justify-center flex-wrap">
+        More Than Just Music
+      </h1>
+      <p class="text-[#afbeff]/90 text-base md:text-lg max-w-[700px] mx-auto mb-10 leading-relaxed font-geist">
+        An elegant, open-source music player designed to match your personal aesthetic. Enjoy seamless background
+        playback, real-time synced lyrics, and high-fidelity streaming from YouTube Music.
+      </p>
+      <div class="flex flex-col items-center justify-center gap-3 mb-6" data-purpose="hero-actions">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
+          <button
+            class="trigger-download-modal flex items-center justify-center gap-2 bg-white text-black px-8 py-3.5 rounded-xl text-sm font-bold hover:scale-105 hover:bg-white/85 transition-all active:scale-95 shadow-lg w-full sm:w-auto">
+            <span class="material-symbols-outlined text-[20px]">download</span>
+            Download App
+          </button>
+        </div>
+        <div class="flex items-center gap-2 text-xs font-geist text-[#afbeff]/60 select-none">
+          <span
+            class="border border-[#afbeff]/30 text-[#afbeff]/80 px-2 py-0.5 rounded-[4px] text-[10px] font-bold tracking-wider">Stable</span>
+          <span>for Android 8.0+</span>
+          <span class="text-white/10 mx-1">|</span>
+          <a href="#beta-channel"
+            class="hover:text-white transition-colors flex items-center gap-1.5 text-[#afbeff]/85">
+            <span
+              class="border border-amber-500/30 text-amber-300 px-1.5 py-0.5 rounded-[4px] text-[9px] font-bold tracking-wider uppercase">Beta</span>
+            <span class="underline underline-offset-2">Nightly builds</span>
+          </a>
+        </div>
+        <div
+          class="flex items-center gap-3 text-[11px] font-geist text-[#afbeff]/50 select-none mt-1 flex-wrap justify-center">
+          <div class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[13px]">star</span>
+            <span id="github-stars-hero">— GitHub stars</span>
+          </div>
+          <span class="text-white/10">|</span>
+          <div class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[13px]">download</span>
+            <span id="total-downloads-hero">— total downloads</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Visual Composition (Centered Phone Mockup under buttons, no floating stats elements, matching Helium clean layout) -->
+    <section class="relative max-w-4xl mx-auto mt-12 px-6 flex flex-col items-center justify-center"
+      data-purpose="main-visual">
+      <!-- Central Phone Mockup -->
+      <div
+        class="relative z-20 w-64 md:w-72 aspect-[9/18.5] bg-black rounded-[3rem] p-3 border-[6px] border-surface-container-highest shadow-2xl overflow-hidden shadow-vivi-blue/10">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-30"></div>
+        <!-- Dynamic Island -->
+        <!-- App Content Mock -->
+        <div class="w-full h-full rounded-[2.2rem] overflow-hidden bg-black">
+          <video alt="VIVI Music App Player" class="w-full h-full object-cover" src="screenshots/home.mp4" autoplay loop
+            muted playsinline></video>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- END: Hero Section -->
+
+  <!-- BEGIN: Features Section (Page 2) -->
+  <div id="features"
+    class="font-body-md text-on-background selection:bg-primary selection:text-on-primary-container bg-transparent w-full pt-32 pb-24">
+    <!-- Features Hero -->
+    <section class="max-w-container-max mx-auto px-6 md:px-margin-desktop text-center mb-16">
+      <h1
+        class="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 tracking-tighter leading-tight text-white">
+        Immersive,<br />dynamic playback.
+      </h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
+        Experience a music player that beautifully adapts to every beat and album cover.
+      </p>
+
+    </section>
+
+    <!-- Phone Mockups Showcase -->
+    <section class="relative w-full overflow-hidden pt-12">
+      <div id="dynamic-mockups"
+        class="flex justify-start md:justify-center items-center md:items-end gap-6 md:gap-12 px-6 md:px-margin-mobile overflow-x-auto no-scrollbar md:overflow-visible min-h-[500px] md:min-h-[700px] snap-x snap-mandatory py-4 md:py-0">
+      </div>
+    </section>
+
+
+  </div>
+  <!-- END: Features Section -->
+
+  <!-- BEGIN: Features Carousel (Page 3) -->
+  <section id="features-carousel" class="w-full max-w-7xl mx-auto px-6 md:px-12 py-32 bg-transparent">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+
+      <!-- Left: Text Content -->
+      <div class="flex flex-col justify-between order-2 lg:order-1 min-h-[350px] md:min-h-[450px]">
+        <!-- Content Container -->
+        <div id="carousel-content" class="transition-all duration-500 transform min-h-[280px] md:min-h-[350px]">
+          <div id="slide-tagline"
+            class="border border-white/20 rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-bold text-white/80 inline-block mb-6 backdrop-blur-sm bg-white/5">
+            PREMIUM EXPERIENCE
+          </div>
+
+          <h2 id="slide-title" class="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-[1.1] mb-6">
+            Synced Lyrics
+          </h2>
+
+          <p id="slide-desc"
+            class="text-on-surface-variant font-body text-base md:text-xl leading-relaxed max-w-xl mb-8 md:mb-12">
+            Sing along with perfectly synced, glowing lyrics that follow every word in real-time. Experience
+            your music like never before.
+          </p>
+        </div>
+
+        <!-- Controls -->
+        <div class="flex flex-col gap-6 mt-4 md:mt-8 w-full">
+          <!-- Progress indicator dots -->
+          <div class="flex gap-3 items-center">
+            <div class="flex gap-2" id="pagination-dots">
+              <!-- Dots injected by JS -->
+            </div>
+          </div>
+
+          <!-- Navigation Arrows -->
+          <div class="flex items-center gap-4">
+            <button id="btn-prev" aria-label="Previous Slide"
+              class="w-12 h-12 rounded-full border border-[#afbeff]/30 flex items-center justify-center text-white hover:bg-[#afbeff]/20 hover:border-[#afbeff]/40 transition-colors group">
+              <span class="material-symbols-outlined transition-transform group-hover:-translate-x-1">arrow_back</span>
+            </button>
+            <button id="btn-next" aria-label="Next Slide"
+              class="w-12 h-12 rounded-full border border-[#afbeff]/30 flex items-center justify-center text-white hover:bg-[#afbeff]/20 hover:border-[#afbeff]/40 transition-colors group">
+              <span
+                class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+            </button>
+
+            <!-- Autoplay Progress Bar -->
+            <div class="ml-4 flex-1 max-w-[120px] h-1.5 bg-white/10 rounded-full overflow-hidden">
+              <div id="autoplay-progress" class="h-full bg-[#afbeff] w-0"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Phone Mockup -->
+      <div class="flex justify-center items-center order-1 lg:order-2 w-full">
+        <div
+          class="relative w-[240px] md:w-[320px] aspect-[9/19.5] rounded-3xl border border-white/10 bg-black overflow-hidden shadow-2xl shadow-black/40">
+
+          <!-- Video Container -->
+          <div id="video-container" class="w-full h-full relative">
+            <video id="slide-video" class="w-full h-full object-cover transition-opacity duration-500" autoplay loop
+              muted playsinline src=""></video>
+
+            <!-- Fallback Placeholder if video is missing -->
+            <div id="video-fallback"
+              class="absolute inset-0 bg-surface flex flex-col items-center justify-center text-center p-6 opacity-0 transition-opacity duration-500 pointer-events-none">
+              <div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined text-3xl text-white/50">videocam</span>
+              </div>
+              <p class="text-xs text-white/50" id="fallback-text">Save video
+                as<br /><b>screenshots/slide1.mp4</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="more-features" class="w-full max-w-7xl mx-auto px-6 md:px-12 pb-12 bg-transparent">
+    <!-- Clean Border-Divided Grid Layout (No Cards) -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-b border-white/10 md:border-l md:border-r">
+
+      <!-- Feature 1 -->
+      <div
+        class="p-8 md:p-10 border-b border-white/10 lg:border-r lg:col-span-2 flex flex-col justify-between min-h-[300px] hover:bg-white/[0.02] transition-colors group">
+        <div>
+          <span class="text-xs font-bold text-[#afbeff] font-geist tracking-widest block mb-4">01 / BRAND PROMISE</span>
+          <h3 class="text-2xl md:text-3xl font-medium text-white mb-4 tracking-tight font-geist leading-tight">Ad-Free &
+            Open Source</h3>
+          <p class="text-[#afbeff]/80 font-geist text-sm md:text-base leading-relaxed max-w-2xl">
+            Seamless background playback with high-fidelity streams from YouTube Music, completely ad-free forever. Open
+            source code for absolute transparency.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div
+        class="p-8 md:p-10 border-b border-white/10 flex flex-col justify-between min-h-[300px] hover:bg-white/[0.02] transition-colors group">
+        <div>
+          <span class="text-xs font-bold text-[#afbeff] font-geist tracking-widest block mb-4">02 / CORE FUNCTION</span>
+          <h3 class="text-xl md:text-2xl font-medium text-white mb-4 tracking-tight font-geist leading-tight">Offline
+            Mode</h3>
+          <p class="text-[#afbeff]/80 font-geist text-sm leading-relaxed">
+            Download and cache tracks onto your device. Intelligent storage management optimizes your offline space
+            automatically.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div
+        class="p-8 md:p-10 border-b border-white/10 md:border-r flex flex-col justify-between min-h-[250px] hover:bg-white/[0.02] transition-colors group">
+        <div>
+          <span class="text-xs font-bold text-[#afbeff] font-geist tracking-widest block mb-4">03 / ECOSYSTEM</span>
+          <h3 class="text-xl font-medium text-white mb-4 tracking-tight font-geist leading-tight">Android Auto</h3>
+          <p class="text-[#afbeff]/80 font-geist text-sm leading-relaxed">
+            Full integration with Android Auto for a safe, seamless, and distraction-free audio experience on the road.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature 4 -->
+      <div
+        class="p-8 md:p-10 border-b border-white/10 lg:border-b-0 lg:border-r flex flex-col justify-between min-h-[250px] hover:bg-white/[0.02] transition-colors group">
+        <div>
+          <span class="text-xs font-bold text-[#afbeff] font-geist tracking-widest block mb-4">04 / ETHICS</span>
+          <h3 class="text-xl font-medium text-white mb-4 tracking-tight font-geist leading-tight">100% Privacy-First
+          </h3>
+          <p class="text-[#afbeff]/80 font-geist text-sm leading-relaxed">
+            Zero trackers, analytics, or telemetry. All your libraries, plays, and settings are stored locally on your
+            device.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature 5 -->
+      <div
+        class="p-8 md:p-10 flex flex-col justify-between min-h-[250px] hover:bg-white/[0.02] transition-colors group">
+        <div>
+          <span class="text-xs font-bold text-[#afbeff] font-geist tracking-widest block mb-4">05 / EXPERIENCE</span>
+          <h3 class="text-xl font-medium text-white mb-4 tracking-tight font-geist leading-tight">Advanced Streaming
+          </h3>
+          <p class="text-[#afbeff]/80 font-geist text-sm leading-relaxed">
+            Continuous background playback with notification drawer controls and gorgeous, responsive canvas visuals.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END: Features Carousel -->
+
+  <!-- BEGIN: Community & Vision Section (Page 4) -->
+  <section id="community" class="w-full max-w-7xl mx-auto px-6 md:px-12 pt-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+
+      <!-- Left: Vision Text -->
+      <div class="lg:col-span-7 xl:col-span-8">
+        <h2
+          class="text-4xl md:text-[48px] font-medium tracking-tight md:tracking-[-0.04em] text-white font-geist leading-[0.95] mb-8">
+          More Than Just a Project
+        </h2>
+
+        <div class="space-y-6 text-[#afbeff]/85 font-geist text-base md:text-lg leading-relaxed mb-10 max-w-3xl">
+          <p>
+            VIVI Music is a free and open-source music player for Android that brings together the best features from
+            modern music apps. Built with premium design principles, it offers a beautiful, personalized experience that
+            adapts to your style.
+          </p>
+          <p>
+            The project started as a passion project to create the ultimate music streaming experience, free from ads
+            and subscriptions. Today, it's powered by a growing community of contributors who believe music should be
+            accessible to everyone.
+          </p>
+        </div>
+
+        <a href="https://github.com/vivizzz007/vivi-music" target="_blank"
+          class="inline-flex items-center justify-center gap-2 bg-white text-black px-8 py-3.5 rounded-xl text-sm font-bold hover:scale-105 hover:bg-white/85 transition-all active:scale-95 shadow-lg w-full sm:w-auto">
+          <span class="material-symbols-outlined text-[20px]">call_split</span>
+          Contribute on GitHub
+        </a>
+      </div>
+
+      <!-- Right: Author (No card background, with desktop separator line) -->
+      <div
+        class="lg:col-span-5 xl:col-span-4 flex justify-center lg:justify-end lg:border-l lg:border-white/10 lg:pl-16">
+        <div class="flex flex-col items-center text-center w-full max-w-sm relative">
+          <div
+            class="relative w-32 h-32 rounded-full mb-6 p-1 bg-gradient-to-tr from-[#afbeff] to-[#152671] glow-avatar overflow-hidden">
+            <!-- Placeholder for author image -->
+            <img src="Devimage/dev.jpg" alt="VIVIDH P ASHOKAN"
+              class="w-full h-full object-cover rounded-full border-2 border-black" loading="lazy" decoding="async" />
+          </div>
+
+          <h3 class="text-2xl font-bold text-white mb-2 tracking-tight font-geist">VIVIDH P ASHOKAN</h3>
+          <p class="text-[#afbeff]/60 text-xs font-semibold uppercase tracking-widest mb-4 font-geist">Lead Developer
+          </p>
+
+          <p class="text-on-surface-variant font-geist text-sm leading-relaxed mb-8">
+            Creator and lead developer. Passionate about building beautiful, open-source Android experiences.
+          </p>
+
+          <a href="https://github.com/vivizzz007" target="_blank"
+            class="flex items-center justify-center gap-2 bg-[#afbeff]/20 border border-[#afbeff]/15 text-white px-8 py-3.5 rounded-xl text-sm font-bold hover:bg-[#afbeff]/25 hover:scale-105 transition-all active:scale-95 shadow-lg w-full">
+            <span class="material-symbols-outlined text-[18px]">account_circle</span>
+            View Profile
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Community Section (No card background, polished centered layout) -->
+  <section class="w-full max-w-4xl mx-auto px-6 md:px-12 mt-10">
+    <div class="flex flex-col items-center text-center border-t border-white/10 pt-16 pb-16">
+      <h2
+        class="text-4xl md:text-[48px] font-medium tracking-tight md:tracking-[-0.04em] text-white font-geist leading-[0.95] mb-6">
+        Join the VIVI Community
+      </h2>
+
+      <p class="text-[#afbeff]/80 font-geist text-base md:text-lg max-w-xl mb-8 leading-relaxed">
+        Need help, want to request a feature, or just want to chat with other users? Join our official Telegram group
+        and be part of the journey.
+      </p>
+
+      <div class="flex items-center justify-center w-full">
+        <a href="https://t.me/vivimusicapp" target="_blank"
+          class="flex items-center justify-center gap-2 bg-white text-black px-8 py-3.5 rounded-xl text-sm font-bold hover:bg-white/85 hover:scale-105 transition-all active:scale-95 shadow-lg w-full sm:w-auto">
+          <svg class="w-5 h-5 fill-current text-black" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.36-.99.53-1.41.52-.46-.01-1.35-.26-2.01-.48-.81-.27-1.46-.42-1.4-.88.03-.24.37-.49 1.02-.75 3.99-1.74 6.66-2.88 8.01-3.44 3.81-1.58 4.6-1.86 5.12-1.87.11 0 .37.03.54.17.14.12.18.28.2.45-.02.07-.02.13-.02.19z" />
+          </svg>
+          Join Group
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GitHub Star Call to Action Section -->
+  <section class="w-full max-w-4xl mx-auto px-6 md:px-12 mt-10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center border-t border-white/10 pt-16 pb-16">
+      <!-- Left: Text content -->
+      <div class="md:col-span-8 text-left">
+        <h2
+          class="text-4xl md:text-[48px] font-medium tracking-tight md:tracking-[-0.04em] text-white font-geist leading-[0.95] mb-4">
+          Love the Project?
+        </h2>
+        <p class="text-[#afbeff]/80 font-geist text-base md:text-lg max-w-xl leading-relaxed">
+          VIVI Music is built with passion and shared completely for free. If you like the work, support us by starring
+          our repository on GitHub!
+        </p>
+      </div>
+
+      <!-- Right: Action Button -->
+      <div class="md:col-span-4 flex justify-start md:justify-end w-full">
+        <a href="https://github.com/vivizzz007/vivi-music" target="_blank"
+          class="inline-flex items-center justify-center gap-2 bg-white text-black px-8 py-3.5 rounded-xl text-sm font-bold hover:bg-white/85 hover:scale-105 transition-all active:scale-95 shadow-lg w-full sm:w-auto">
+          <span class="material-symbols-outlined text-[20px] text-black fill-current">star</span>
+          Star on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ready to try VIVI Music? Section -->
+  <section class="w-full max-w-4xl mx-auto px-6 md:px-12 pb-32">
+    <div class="flex flex-col items-center text-center border-t border-white/10 pt-16">
+
+      <!-- Download Icon -->
+      <div class="text-white mb-6">
+        <svg class="w-12 h-12 stroke-current" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+          stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
+          <path d="M7 11l5 5l5 -5"></path>
+          <path d="M12 4l0 12"></path>
+        </svg>
+      </div>
+
+      <h2
+        class="text-4xl md:text-[48px] font-medium tracking-tight md:tracking-[-0.04em] text-white font-geist leading-[0.95] mb-6">
+        Ready to try VIVI Music?
+      </h2>
+      <p class="text-[#afbeff]/80 font-geist text-base md:text-lg max-w-xl mb-8 leading-relaxed">
+        It's never too late to take control of your music listening experience. Enjoy a fast, fully open-source app with
+        no ads or subscriptions. We hope you'll love it!
+      </p>
+
+      <div class="flex flex-col items-center justify-center gap-3 w-full sm:w-auto">
+        <button
+          class="trigger-download-modal flex items-center justify-center gap-2 bg-white text-black px-8 py-3.5 rounded-xl text-sm font-bold hover:scale-105 hover:bg-white/85 transition-all active:scale-95 shadow-lg w-full sm:w-auto">
+          <span class="material-symbols-outlined text-[20px]">download</span>
+          Download App
+        </button>
+        <div class="flex items-center gap-2 text-xs font-geist text-[#afbeff]/60 select-none">
+          <span
+            class="border border-[#afbeff]/30 text-[#afbeff]/80 px-2 py-0.5 rounded-[4px] text-[10px] font-bold tracking-wider">Stable</span>
+          <span>for Android 8.0+</span>
+          <span class="text-white/10 mx-1">|</span>
+          <a href="#beta-channel"
+            class="hover:text-white transition-colors flex items-center gap-1.5 text-[#afbeff]/85">
+            <span
+              class="border border-amber-500/30 text-amber-300 px-1.5 py-0.5 rounded-[4px] text-[9px] font-bold tracking-wider uppercase">Beta</span>
+            <span class="underline underline-offset-2">Nightly builds</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END: Community & Vision Section -->
+
+  <!-- BEGIN: Experimental Beta Section (Minimalist Layout) -->
+  <section id="beta-channel" class="w-full max-w-4xl mx-auto px-6 md:px-12 mt-10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start border-t border-white/10 pt-16 pb-16">
+      <!-- Left: Text content & Info -->
+      <div class="md:col-span-8 text-left">
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide bg-amber-500/10 text-amber-300 border border-amber-500/20 mb-4 select-none">
+          <span class="material-symbols-outlined text-[14px]">science</span>
+          Experimental builds
+        </span>
+        <h2
+          class="text-4xl md:text-[48px] font-medium tracking-tight md:tracking-[-0.04em] text-white font-geist leading-[0.95] mb-4">
+          Try the Experimental Beta
+        </h2>
+        <p class="text-[#afbeff]/85 font-geist text-base md:text-lg max-w-xl leading-relaxed mb-6">
+          Get bleeding-edge updates built directly from the latest source code commits. Try new features and bug fixes
+          before they release.
+        </p>
+        <div class="text-xs text-[#afbeff]/65 leading-relaxed font-geist flex items-start gap-2 max-w-xl">
+          <span class="material-symbols-outlined text-[#afbeff]/80 text-[18px] select-none shrink-0 mt-0.5">info</span>
+          <span>
+            <strong>Note:</strong> If you want to receive experimental updates directly on your device, enable the
+            <strong>Beta Updates</strong> toggle in your app's <strong>Update Settings</strong> (under system updates).
+          </span>
+        </div>
+      </div>
+
+      <!-- Right: Action Button -->
+      <div class="md:col-span-4 flex flex-col items-start md:items-end justify-center w-full md:pt-14 select-none">
+        <a id="dl-btn-beta-section" href="#"
+          class="flex items-center justify-center gap-2 bg-[#afbeff] text-black px-8 py-3.5 rounded-xl text-sm font-bold hover:scale-105 hover:bg-[#afbeff]/85 transition-all active:scale-95 shadow-lg w-full">
+          <span class="material-symbols-outlined text-[20px]">science</span>
+          Download Beta (.zip)
+        </a>
+        <div
+          class="flex items-center gap-2 text-[10px] font-geist text-[#afbeff]/50 mt-3 w-full justify-center md:justify-end">
+          <span
+            class="border border-[#afbeff]/20 px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider">Nightly</span>
+          <span>Compiled daily on GitHub</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END: Experimental Beta Section -->
+
+  <!-- BEGIN: FAQ Section -->
+  <section id="faq" class="w-full max-w-4xl mx-auto px-6 md:px-12 pb-32">
+    <div class="border-t border-white/10 pt-16">
+      <h2
+        class="text-4xl md:text-[48px] font-medium tracking-tight md:tracking-[-0.04em] text-white font-geist leading-[0.95] mb-12 text-center">
+        Frequently Asked Questions
+      </h2>
+
+      <div class="space-y-0">
+        <!-- FAQ Item 1 -->
+        <details
+          class="group border-t border-l border-r border-white/10 rounded-t-2xl rounded-b-none bg-white/[0.02] backdrop-blur-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
+          id="faq-item-1">
+          <summary
+            class="flex justify-between items-center p-6 text-white font-geist font-medium text-base md:text-lg cursor-pointer select-none focus:outline-none hover:bg-white/[0.02] rounded-t-2xl transition-colors">
+            <span>What is VIVI Music?</span>
+            <span class="material-symbols-outlined text-[#afbeff] transition-transform duration-300">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 pt-0 text-[#afbeff]/80 font-geist text-sm md:text-base leading-relaxed">
+            VIVI Music is a free, fully open-source music player for Android. It streams high-fidelity music from
+            YouTube Music completely ad-free and offers a premium, personalized user experience that adapts to your
+            style.
+          </div>
+        </details>
+
+        <!-- FAQ Item 2 -->
+        <details
+          class="group border-t border-l border-r border-white/10 rounded-none bg-white/[0.02] backdrop-blur-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
+          id="faq-item-2">
+          <summary
+            class="flex justify-between items-center p-6 text-white font-geist font-medium text-base md:text-lg cursor-pointer select-none focus:outline-none hover:bg-white/[0.02] transition-colors">
+            <span>Is VIVI Music free and ad-free?</span>
+            <span class="material-symbols-outlined text-[#afbeff] transition-transform duration-300">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 pt-0 text-[#afbeff]/80 font-geist text-sm md:text-base leading-relaxed">
+            Yes, VIVI Music is 100% free and open-source under the GPL-3.0 license. It does not contain any ads,
+            tracking, telemetry, or hidden subscriptions.
+          </div>
+        </details>
+
+        <!-- FAQ Item 3 -->
+        <details
+          class="group border-t border-l border-r border-white/10 rounded-none bg-white/[0.02] backdrop-blur-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
+          id="faq-item-3">
+          <summary
+            class="flex justify-between items-center p-6 text-white font-geist font-medium text-base md:text-lg cursor-pointer select-none focus:outline-none hover:bg-white/[0.02] transition-colors">
+            <span>Does it support offline playback?</span>
+            <span class="material-symbols-outlined text-[#afbeff] transition-transform duration-300">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 pt-0 text-[#afbeff]/80 font-geist text-sm md:text-base leading-relaxed">
+            Absolutely! You can download and cache your favorite tracks to listen offline. The app's storage management
+            optimizes your local space automatically.
+          </div>
+        </details>
+
+        <!-- FAQ Item 4 -->
+        <details
+          class="group border-t border-l border-r border-white/10 rounded-none bg-white/[0.02] backdrop-blur-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
+          id="faq-item-4">
+          <summary
+            class="flex justify-between items-center p-6 text-white font-geist font-medium text-base md:text-lg cursor-pointer select-none focus:outline-none hover:bg-white/[0.02] transition-colors">
+            <span>Is my data private?</span>
+            <span class="material-symbols-outlined text-[#afbeff] transition-transform duration-300">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 pt-0 text-[#afbeff]/80 font-geist text-sm md:text-base leading-relaxed">
+            Yes. VIVI Music values your privacy and has zero trackers, analytics, or telemetry. Your library, listening
+            history, and custom settings are stored locally on your device.
+          </div>
+        </details>
+
+        <!-- FAQ Item 5 -->
+        <details
+          class="group border border-white/10 rounded-b-2xl rounded-t-none bg-white/[0.02] backdrop-blur-md transition-all duration-300 [&_summary::-webkit-details-marker]:hidden"
+          id="faq-item-5">
+          <summary
+            class="flex justify-between items-center p-6 text-white font-geist font-medium text-base md:text-lg cursor-pointer select-none focus:outline-none hover:bg-white/[0.02] rounded-b-2xl transition-colors">
+            <span>How do I install or update VIVI Music?</span>
+            <span class="material-symbols-outlined text-[#afbeff] transition-transform duration-300">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 pt-0 text-[#afbeff]/80 font-geist text-sm md:text-base leading-relaxed">
+            You can download the APK file directly from our website using the download buttons or from our official
+            GitHub Releases page. The app includes an in-built updater to seamlessly transition between Official and
+            Nightly builds.
+          </div>
+        </details>
+      </div>
+
+      <div class="mt-8 text-center">
+        <p class="text-xs font-geist text-[#afbeff]/60">
+          Still have questions? Check out the full
+          <a href="docs.html" class="text-white hover:underline font-bold inline-flex items-center gap-0.5">
+            Documentation
+            <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+          </a>.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- END: FAQ Section -->
+
+  <!-- BEGIN: Footer -->
+  <footer class="border-t border-white/10 bg-[#152671]/40 backdrop-blur-md pt-16 pb-8 px-6 md:px-12"
+    data-purpose="Footer">
+    <div class="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+      <!-- Logo & Description -->
+      <div class="col-span-1 flex flex-col gap-6">
+        <div class="flex items-center gap-3">
+          <img src="appicon/vivi.png" alt="VIVI Music Logo" class="w-8 h-8 rounded-[8px] object-cover invert"
+            loading="lazy" decoding="async" />
+          <span class="text-lg font-bold tracking-tight text-white">VIVI Music</span>
+        </div>
+        <p class="text-on-surface-variant font-body text-sm leading-relaxed max-w-xs pr-4">
+          Crafting the next generation of open-source music experiences. Beautiful, fast, and focused on you.
+        </p>
+        <div class="flex gap-4 mt-2">
+          <a href="https://github.com/vivizzz007" target="_blank"
+            class="w-10 h-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-colors">
+            <span class="material-symbols-outlined text-[20px]">code</span>
+          </a>
+          <a href="mailto:mkmdevilmi@gmail.com"
+            class="w-10 h-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-colors">
+            <span class="material-symbols-outlined text-[20px]">mail</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Product Links -->
+      <div>
+        <h4 class="font-bold mb-6 text-base text-white tracking-tight">Product</h4>
+        <ul class="space-y-4 text-sm text-on-surface-variant font-body">
+          <li><a class="hover:text-white transition-colors" href="#features">Features</a></li>
+          <li><a class="hover:text-white transition-colors" href="#">Download</a></li>
+          <li><a class="hover:text-white transition-colors" href="#">Highlights</a></li>
+          <li><a class="hover:text-white transition-colors" href="#">Gallery</a></li>
+        </ul>
+      </div>
+
+      <!-- Community Links -->
+      <div>
+        <h4 class="font-bold mb-6 text-base text-white tracking-tight">Community</h4>
+        <ul class="space-y-4 text-sm text-on-surface-variant font-body">
+          <li><a class="hover:text-white transition-colors" href="https://github.com/vivizzz007/vivi-music"
+              target="_blank">GitHub Repository</a></li>
+          <li><a class="hover:text-white transition-colors" href="https://github.com/vivizzz007/vivi-music/issues"
+              target="_blank">Bug Reports</a></li>
+          <li><a class="hover:text-white transition-colors" href="https://github.com/vivizzz007/vivi-music/discussions"
+              target="_blank">Join Discussions</a></li>
+          <li><a class="hover:text-white transition-colors" href="https://github.com/vivizzz007/vivi-music/releases"
+              target="_blank">Update Log</a></li>
+          <li><a class="hover:text-white transition-colors" href="server.html">Dev Blog</a></li>
+        </ul>
+      </div>
+
+      <!-- License Info -->
+      <div>
+        <h4 class="font-bold mb-6 text-base text-white tracking-tight">License</h4>
+        <p class="text-on-surface-variant font-body text-sm leading-relaxed mb-6 max-w-[280px]">
+          VIVI Music is released under the <strong class="text-white font-semibold">GPL-3.0 License</strong>. We believe
+          in the power of free and open software.
+        </p>
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-vivi-purple/20 bg-vivi-purple/10 text-[#d4c6ff] text-xs font-semibold tracking-wide">
+          <span class="material-symbols-outlined text-[16px]">verified</span>
+          Fully Open Source
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div
+      class="container mx-auto max-w-7xl pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-body text-on-surface-variant/50">
+      <div class="flex items-center gap-4">
+        <p>© 2026 VIVI Music. All rights reserved.</p>
+        <span class="text-white/10">|</span>
+        <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+        <span class="text-white/10">|</span>
+        <a href="terms.html" class="hover:text-white transition-colors">Terms &amp; Conditions</a>
+      </div>
+      <p class="flex items-center gap-1 flex-wrap justify-center md:justify-end">
+        <span>Designed by</span>
+        <a href="https://github.com/vivizzz007" target="_blank"
+          class="text-white/80 hover:text-white transition-colors font-semibold">Vividh P Ashokan</a>
+        <span class="text-white/20">&amp;</span>
+        <span class="text-white/80 font-semibold">Sharon Thomas</span>
+      </p>
+    </div>
+  </footer>
+  <!-- END: Footer -->
+
+  <!-- BEGIN: Download Modal (Helium-Matching) -->
+  <dialog id="download-modal" class="outline-none border-none">
+    <!-- Custom Backdrop inside dialog to allow closing fade transitions -->
+    <div class="dialog-backdrop"></div>
+
+    <div class="helium-dialog-container p-6 text-center relative z-10 shadow-2xl flex flex-col items-center gap-4">
+      <!-- Top Icon & Title Grouped -->
+      <div class="flex flex-col items-center select-none">
+        <span class="material-symbols-outlined text-[40px] text-white mb-[-4px]">android</span>
+        <h3 class="text-2xl font-bold text-white tracking-tight font-instrument">Get VIVI Music</h3>
+      </div>
+      <p class="text-on-surface-variant font-instrument text-base leading-relaxed mb-4 px-1">
+        Choose your preferred platform or installation source for Android.
+      </p>
+
+      <div class="grid grid-cols-2 gap-3 mb-3 w-full">
+        <a id="dl-btn-gms" href="#" class="helium-dialog-btn select-none group">
+          <span
+            class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform text-[#afbeff]">download</span>
+          <span class="text-base font-bold">Gms</span>
+          <span id="dl-label-gms" class="text-xs text-[#afbeff]/60">Google Play</span>
+        </a>
+        <a id="dl-btn-foss" href="#" class="helium-dialog-btn select-none group">
+          <span
+            class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform text-[#afbeff]">download</span>
+          <span class="text-base font-bold">Izzy</span>
+          <span id="dl-label-foss" class="text-xs text-[#afbeff]/60">FOSS Build</span>
+        </a>
+      </div>
+
+      <a id="dl-btn-beta" href="#"
+        class="helium-dialog-btn select-none group !flex-row !items-center !justify-start !text-left gap-3 w-full py-3 mb-2">
+        <span
+          class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform text-[#afbeff] shrink-0">science</span>
+        <div class="text-left flex-1 min-w-0">
+          <span class="text-sm font-bold block leading-none mb-1 text-white">Download Beta</span>
+          <span id="dl-label-beta" class="text-[10px] text-[#afbeff]/60 leading-none block truncate">Bleeding-edge
+            Nightly Build</span>
+        </div>
+      </a>
+
+      <button id="close-download-modal" class="helium-dialog-btn-close">
+        Close
+      </button>
+    </div>
+  </dialog>
+  <!-- END: Download Modal -->
+
+  <!-- App Logic -->
+  <script src="index.js" defer></script>
+</body>
+
+</html>

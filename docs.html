@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html class="dark" lang="en" style="scroll-behavior: smooth;">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>VIVI Music - Documentation</title>
+
+  <!-- Google Fonts: Sora, Geist, Material Symbols -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Geist:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS v3 -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#ffffff",
+            "surface": "rgba(175, 190, 255, 0.15)",
+            "surface-dim": "rgba(175, 190, 255, 0.1)",
+            "surface-bright": "rgba(175, 190, 255, 0.25)",
+            "surface-container-lowest": "rgba(175, 190, 255, 0.05)",
+            "surface-container-low": "rgba(175, 190, 255, 0.08)",
+            "surface-container": "rgba(175, 190, 255, 0.12)",
+            "surface-container-high": "rgba(175, 190, 255, 0.18)",
+            "surface-container-highest": "rgba(175, 190, 255, 0.25)",
+            "on-surface": "#e5e2e1",
+            "on-surface-variant": "#c2c6d6",
+            "vivi": {
+              blue: '#afbeff',
+              purple: '#5669bd',
+            },
+            "background": "#152671",
+            "on-background": "#e5e2e1",
+          },
+          fontFamily: {
+            sora: ['Sora', 'sans-serif'],
+            geist: ["Geist", 'sans-serif'],
+            instrument: ['"Instrument Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Custom Animations and styles -->
+  <link href="index.css" rel="stylesheet">
+  
+  <link href="docs.css" rel="stylesheet">
+</head>
+
+<body class="text-on-surface font-sora selection:bg-vivi-blue selection:text-white overflow-x-hidden" style="background-color: #152671;">
+
+  <!-- Fixed background gradient element -->
+  <div id="page-background" style="position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;z-index:-1;background:linear-gradient(180deg,#152671 10%,#1b2c78 30%,#5669bd 100%);pointer-events:none;"></div>
+
+  <!-- Top Navigation Bar -->
+  <nav id="top-navbar" class="fixed top-0 w-full z-[100] py-4 px-6 md:px-12 flex justify-between items-center bg-[#152671]/90 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
+    <div class="flex items-center gap-6">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="appicon/vivi.png" alt="VIVI Music Logo" class="w-8 h-8 rounded-[8px] object-cover invert" decoding="async" />
+        <span class="text-xl font-bold tracking-tight text-white hidden sm:block">VIVI Documentation</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm font-medium ml-4">
+        <a href="index.html" class="text-on-surface-variant hover:text-white transition-colors flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px]">home</span> Home</a>
+        <a href="#welcome" class="text-white flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px]">menu_book</span> Guide</a>
+        <a href="#chapter-6" class="text-on-surface-variant hover:text-white transition-colors flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px]">build</span> Troubleshooting</a>
+      </div>
+    </div>
+    
+    <!-- Right Actions -->
+    <div class="flex items-center gap-4">
+      <div class="hidden sm:flex items-center bg-white/5 border border-white/10 rounded-full px-4 py-2 w-64 hover:bg-white/10 transition-colors cursor-text">
+         <span class="material-symbols-outlined text-[18px] text-white/50 mr-2">search</span>
+         <span class="text-sm text-white/50">Search documentation...</span>
+      </div>
+      <a href="https://github.com/vivizzz007/vivi-music" target="_blank" class="text-on-surface-variant hover:text-white transition-colors flex items-center gap-1.5 ml-2">
+        <span class="material-symbols-outlined text-[20px]">code</span> <span class="hidden lg:inline">GitHub</span>
+      </a>
+      <!-- Hamburger Button (mobile only) -->
+      <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors" aria-label="Open menu">
+        <span class="material-symbols-outlined text-white text-[22px]" id="hamburger-icon">menu</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer-backdrop" id="mobile-backdrop"></div>
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="px-5 py-5 flex items-center justify-between border-b border-white/10">
+      <div class="flex items-center gap-2">
+        <img src="appicon/vivi.png" alt="VIVI" class="w-7 h-7 rounded-[6px] object-cover invert" />
+        <span class="text-base font-bold text-white tracking-tight">Documentation</span>
+      </div>
+      <button id="mobile-close-btn" class="flex items-center justify-center w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors" aria-label="Close menu">
+        <span class="material-symbols-outlined text-white text-[20px]">close</span>
+      </button>
+    </div>
+    <div class="px-5 py-4 flex flex-col gap-1 text-sm font-geist">
+      <a href="index.html" class="flex items-center gap-2 text-on-surface-variant hover:text-white transition-colors py-2.5 px-3 rounded-lg hover:bg-white/5">
+        <span class="material-symbols-outlined text-[18px]">home</span> Home
+      </a>
+      <a href="https://github.com/vivizzz007/vivi-music" target="_blank" class="flex items-center gap-2 text-on-surface-variant hover:text-white transition-colors py-2.5 px-3 rounded-lg hover:bg-white/5">
+        <span class="material-symbols-outlined text-[18px]">code</span> GitHub
+      </a>
+    </div>
+    <div class="px-5 py-2 border-t border-white/10">
+      <div class="flex flex-col gap-5 text-sm font-geist py-4">
+
+        <div class="sidebar-group">
+          <h4 class="font-bold text-white mb-3 uppercase tracking-wider text-xs opacity-70 cursor-pointer select-none flex items-center transition-opacity hover:opacity-100" onclick="this.parentElement.classList.toggle('collapsed')">
+            <span class="material-symbols-outlined text-[18px] text-vivi-blue mr-2">import_contacts</span> Introduction
+            <span class="material-symbols-outlined ml-auto text-[16px] chevron">expand_more</span>
+          </h4>
+          <ul class="flex flex-col gap-3 pl-4 border-l border-white/10 ml-2">
+            <li><a href="#welcome" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Welcome</a></li>
+            <li><a href="#features" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Key Features</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-group collapsed">
+          <h4 class="font-bold text-white mb-3 uppercase tracking-wider text-xs opacity-90 cursor-pointer select-none flex items-center transition-opacity hover:opacity-100" onclick="this.parentElement.classList.toggle('collapsed')">
+            <span class="material-symbols-outlined text-[18px] text-vivi-blue mr-2">download</span> Installation
+            <span class="material-symbols-outlined ml-auto text-[16px] chevron opacity-70">expand_more</span>
+          </h4>
+          <ul class="flex flex-col gap-3 pl-4 border-l border-white/10 ml-2">
+            <li><a href="#sys-req" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">System Requirements</a></li>
+            <li><a href="#installing" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Installing Vivi</a></li>
+            <li><a href="#build-differences" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Vivi vs. Vividroid</a></li>
+            <li><a href="#first-launch" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">First Launch</a></li>
+            <li><a href="#updating" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Updating Vivi</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-group collapsed">
+          <h4 class="font-bold text-white mb-3 uppercase tracking-wider text-xs opacity-90 cursor-pointer select-none flex items-center transition-opacity hover:opacity-100" onclick="this.parentElement.classList.toggle('collapsed')">
+            <span class="material-symbols-outlined text-[18px] text-vivi-blue mr-2">settings</span> Setting Up
+            <span class="material-symbols-outlined ml-auto text-[16px] chevron opacity-70">expand_more</span>
+          </h4>
+          <ul class="flex flex-col gap-3 pl-4 border-l border-white/10 ml-2">
+            <li><a href="#account" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Account &amp; Profile</a></li>
+            <li><a href="#player-audio" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Player &amp; Audio</a></li>
+            <li><a href="#appearance" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Appearance</a></li>
+            <li><a href="#listen-together" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Listen Together</a></li>
+            <li><a href="#ai-lyrics" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">AI Lyrics</a></li>
+            <li><a href="#privacy" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Privacy &amp; Storage</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-group collapsed">
+          <h4 class="font-bold text-white mb-3 uppercase tracking-wider text-xs opacity-90 cursor-pointer select-none flex items-center transition-opacity hover:opacity-100" onclick="this.parentElement.classList.toggle('collapsed')">
+            <span class="material-symbols-outlined text-[18px] text-vivi-blue mr-2">play_circle</span> Using the App
+            <span class="material-symbols-outlined ml-auto text-[16px] chevron opacity-70">expand_more</span>
+          </h4>
+          <ul class="flex flex-col gap-3 pl-4 border-l border-white/10 ml-2">
+            <li><a href="#searching" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Browsing</a></li>
+            <li><a href="#playback" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Playback</a></li>
+            <li><a href="#playlists" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Playlists</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-group collapsed">
+          <h4 class="font-bold text-white mb-3 uppercase tracking-wider text-xs opacity-90 cursor-pointer select-none flex items-center transition-opacity hover:opacity-100" onclick="this.parentElement.classList.toggle('collapsed')">
+            <span class="material-symbols-outlined text-[18px] text-vivi-blue mr-2">integration_instructions</span> Developers
+            <span class="material-symbols-outlined ml-auto text-[16px] chevron opacity-70">expand_more</span>
+          </h4>
+          <ul class="flex flex-col gap-3 pl-4 border-l border-white/10 ml-2">
+            <li><a href="#architecture" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Architecture</a></li>
+            <li><a href="#contributing" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Contributing</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-group collapsed">
+          <h4 class="font-bold text-white mb-3 uppercase tracking-wider text-xs opacity-90 cursor-pointer select-none flex items-center transition-opacity hover:opacity-100" onclick="this.parentElement.classList.toggle('collapsed')">
+            <span class="material-symbols-outlined text-[18px] text-vivi-blue mr-2">build</span> Troubleshooting
+            <span class="material-symbols-outlined ml-auto text-[16px] chevron opacity-70">expand_more</span>
+          </h4>
+          <ul class="flex flex-col gap-3 pl-4 border-l border-white/10 ml-2">
+            <li><a href="#migration" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Migration Issues</a></li>
+            <li><a href="#playback-issues" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Playback Issues</a></li>
+            <li><a href="#login-issues" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Login Issues</a></li>
+            <li><a href="#download-issues" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Download Issues</a></li>
+            <li><a href="#app-crashes" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">App Crashes</a></li>
+            <li><a href="#contact-support" class="text-on-surface-variant hover:text-white transition-colors mobile-nav-link">Contact &amp; Support</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Layout Container -->
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-8 flex gap-6 relative" style="padding-top: 96px;">
+    
+    <!-- Left Sidebar Wrapper -->
+    <div class="hidden lg:block w-56 shrink-0 relative">
+      <!-- Sticky Left Sidebar -->
+      <aside class="sidebar-scroll py-6 pr-4 border-r border-white/5" style="position: sticky; top: 96px; height: calc(100vh - 96px); width: 14rem; overflow-y: auto; overscroll-behavior: contain;">
+        <div class="flex flex-col gap-6 text-sm font-geist pb-10">
+          
+          <div class="sidebar-group">
+            <h4 class="font-bold text-white mb-3 uppercase tracking-wider text-xs opacity-70 cursor-pointer select-none flex items-center transition-opacity hover:opacity-100" onclick="this.parentElement.classList.toggle('collapsed')">
+              <span class="material-symbols-outlined text-[18px] text-vivi-blue mr-2">import_contacts</span> Introduction
+              <span class="material-symbols-outlined ml-auto text-[16px] chevron">expand_more</span>
+            </h4>
+            <ul class="flex flex-col gap-3 pl-4 border-l border-white/10 ml-2">
+              <li><a href="#welcome" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="welcome">Welcome</a></li>
+              <li><a href="#features" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="features">Key Features</a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-group collapsed">
+            <h4 class="font-bold text-white mb-3 uppercase tracking-wider text-xs flex items-center opacity-90 cursor-pointer select-none transition-opacity hover:opacity-100" onclick="this.parentElement.classList.toggle('collapsed')">
+              <span class="material-symbols-outlined text-[18px] text-vivi-blue mr-2">download</span> Installation
+              <span class="material-symbols-outlined ml-auto text-[16px] chevron opacity-70">expand_more</span>
+            </h4>
+            <ul class="flex flex-col gap-3 pl-4 border-l border-white/10 ml-2">
+              <li><a href="#sys-req" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="sys-req">System Requirements</a></li>
+              <li><a href="#installing" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="installing">Installing Vivi</a></li>
+              <li><a href="#build-differences" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="build-differences">Vivi vs. Vividroid</a></li>
+              <li><a href="#first-launch" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="first-launch">First Launch</a></li>
+              <li><a href="#updating" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="updating">Updating Vivi</a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-group collapsed">
+            <h4 class="font-bold text-white mb-3 uppercase tracking-wider text-xs flex items-center opacity-90 cursor-pointer select-none transition-opacity hover:opacity-100" onclick="this.parentElement.classList.toggle('collapsed')">
+              <span class="material-symbols-outlined text-[18px] text-vivi-blue mr-2">settings</span> Setting Up
+              <span class="material-symbols-outlined ml-auto text-[16px] chevron opacity-70">expand_more</span>
+            </h4>
+            <ul class="flex flex-col gap-3 pl-4 border-l border-white/10 ml-2">
+              <li><a href="#account" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="account">Account & Profile</a></li>
+              <li><a href="#player-audio" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="player-audio">Player & Audio</a></li>
+              <li><a href="#appearance" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="appearance">Appearance</a></li>
+              <li><a href="#listen-together" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="listen-together">Listen Together</a></li>
+              <li><a href="#ai-lyrics" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="ai-lyrics">AI Lyrics</a></li>
+              <li><a href="#privacy" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="privacy">Privacy & Storage</a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-group collapsed">
+            <h4 class="font-bold text-white mb-3 uppercase tracking-wider text-xs flex items-center opacity-90 cursor-pointer select-none transition-opacity hover:opacity-100" onclick="this.parentElement.classList.toggle('collapsed')">
+              <span class="material-symbols-outlined text-[18px] text-vivi-blue mr-2">play_circle</span> Using the App
+              <span class="material-symbols-outlined ml-auto text-[16px] chevron opacity-70">expand_more</span>
+            </h4>
+            <ul class="flex flex-col gap-3 pl-4 border-l border-white/10 ml-2">
+              <li><a href="#searching" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="searching">Browsing</a></li>
+              <li><a href="#playback" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="playback">Playback</a></li>
+              <li><a href="#playlists" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="playlists">Playlists</a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-group collapsed">
+            <h4 class="font-bold text-white mb-3 uppercase tracking-wider text-xs flex items-center opacity-90 cursor-pointer select-none transition-opacity hover:opacity-100" onclick="this.parentElement.classList.toggle('collapsed')">
+              <span class="material-symbols-outlined text-[18px] text-vivi-blue mr-2">integration_instructions</span> Developers
+              <span class="material-symbols-outlined ml-auto text-[16px] chevron opacity-70">expand_more</span>
+            </h4>
+            <ul class="flex flex-col gap-3 pl-4 border-l border-white/10 ml-2">
+              <li><a href="#architecture" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="architecture">Architecture</a></li>
+              <li><a href="#contributing" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="contributing">Contributing</a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-group collapsed">
+            <h4 class="font-bold text-white mb-3 uppercase tracking-wider text-xs flex items-center opacity-90 cursor-pointer select-none transition-opacity hover:opacity-100" onclick="this.parentElement.classList.toggle('collapsed')">
+              <span class="material-symbols-outlined text-[18px] text-vivi-blue mr-2">build</span> Troubleshooting
+              <span class="material-symbols-outlined ml-auto text-[16px] chevron opacity-70">expand_more</span>
+            </h4>
+            <ul class="flex flex-col gap-3 pl-4 border-l border-white/10 ml-2">
+              <li><a href="#migration" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="migration">Migration Issues</a></li>
+              <li><a href="#playback-issues" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="playback-issues">Playback Issues</a></li>
+              <li><a href="#login-issues" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="login-issues">Login Issues</a></li>
+              <li><a href="#download-issues" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="download-issues">Download Issues</a></li>
+              <li><a href="#app-crashes" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="app-crashes">App Crashes</a></li>
+              <li><a href="#contact-support" class="text-on-surface-variant hover:text-white transition-colors nav-link-sidebar" data-target="contact-support">Contact & Support</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </aside>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1 min-w-0 py-10 font-geist w-full max-w-4xl pb-32 relative z-10">
+        
+        <!-- Header -->
+        <div class="mb-14 border-b border-white/10 pb-10">
+            <div class="flex items-center gap-3 mb-6">
+               <span class="bg-surface-bright text-white px-3 py-1 rounded-full text-xs font-bold tracking-wide border border-white/10">Version 6.0.2 • Stable</span>
+               <span class="bg-surface text-on-surface-variant px-3 py-1 rounded-full text-xs font-bold tracking-wide border border-white/5">Android Platform</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight font-sora leading-tight">Official Documentation</h1>
+            
+            <div class="flex flex-wrap gap-4">
+                <a href="https://vivimusic.mkmdevilmi.workers.dev/" class="flex items-center gap-2 bg-white text-black px-5 py-2.5 rounded-xl text-sm font-bold hover:scale-105 transition-all shadow-lg">
+                    <span class="material-symbols-outlined text-[20px]">public</span> Website
+                </a>
+                <a href="https://github.com/vivizzz007/vivi-music" target="_blank" class="flex items-center gap-2 bg-surface text-white px-5 py-2.5 rounded-xl border border-white/10 text-sm font-bold hover:bg-white/10 transition-all">
+                    <span class="material-symbols-outlined text-[20px]">code</span> GitHub
+                </a>
+                <a href="https://t.me/vivimusicapp" target="_blank" class="flex items-center gap-2 bg-[#2AABEE]/10 text-[#2AABEE] px-5 py-2.5 rounded-xl border border-[#2AABEE]/20 text-sm font-bold hover:bg-[#2AABEE]/20 transition-all">
+                    <span class="material-symbols-outlined text-[20px]">send</span> Telegram
+                </a>
+            </div>
+        </div>
+
+        <!-- Markdown Content styling wrapper -->
+        <div class="prose prose-invert max-w-none 
+                    prose-headings:font-sora prose-headings:text-white prose-headings:tracking-tight
+                    prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-6 prose-h2:font-semibold prose-h2:pb-2 prose-h2:border-b prose-h2:border-white/5
+                    prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-4 prose-h3:font-medium
+                    prose-h4:text-xl prose-h4:mt-8 prose-h4:mb-3 prose-h4:font-medium prose-h4:text-vivi-blue
+                    prose-p:text-on-surface-variant prose-p:leading-relaxed prose-p:mb-5 prose-p:text-[16px]
+                    prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-6 prose-ul:text-on-surface-variant prose-ul:marker:text-white/30
+                    prose-ol:list-decimal prose-ol:pl-6 prose-ol:mb-6 prose-ol:text-on-surface-variant prose-ol:marker:text-white/50
+                    prose-li:mb-2
+                    prose-a:text-vivi-blue prose-a:no-underline hover:prose-a:underline hover:prose-a:text-white prose-a:transition-colors
+                    prose-strong:text-white prose-strong:font-semibold">
+
+            <h2 id="welcome" class="prose-headings flex items-center gap-3"><span class="material-symbols-outlined text-vivi-blue text-4xl">waving_hand</span> Welcome to Vivi Music</h2>
+            <p>Vivi Music is a free, open-source Android music streaming app built for people who want great audio, full control, and no bloat. Whether you're a casual listener or a power user who wants to fine-tune every setting, this documentation has you covered.</p>
+            
+            <h3 id="what-is">What is Vivi Music?</h3>
+            <p>Vivi Music is developed by Vividh P Ashokan and is currently at version 6.0.2 (Stable). It streams music from sources like YouTube Music and JioSaavn, with deep customisation for audio quality, playback behaviour, and social features like Listen Together.</p>
+            
+            <h3 id="features">Key Features at a Glance</h3>
+            <ul>
+                <li><strong>High-quality audio streaming</strong> with JioSaavn and YouTube Music support</li>
+                <li><strong>ViviEqualizer</strong> — pro-grade acoustic tuning built into the app</li>
+                <li><strong>Listen Together</strong> — listen in real-time with friends via room codes</li>
+                <li><strong>AI Lyrics Translation</strong> — translate song lyrics using OpenRouter AI</li>
+                <li><strong>Discord Rich Presence</strong> and Last.fm scrobbling integrations</li>
+                <li>Backup & restore, m3u/csv playlist import</li>
+                <li><strong>Privacy controls</strong> — pause history, disable screenshots</li>
+                <li>Beta update channel for early access to new features</li>
+            </ul>
+
+            <h3 id="how-to-use">How to Use This Documentation</h3>
+            <p>This guide is organised to take you from first install to advanced configuration. Casual users can stop after Chapter 3. Developers and contributors should read Chapter 5. If something breaks, jump straight to Chapter 6.</p>
+            <ul>
+                <li>New user? Start at <a href="#chapter-1">Chapter 1 — Installation</a></li>
+                <li>Already installed? Jump to <a href="#chapter-2">Chapter 2 — Setting Up</a></li>
+                <li>Something broken? Go to <a href="#chapter-6">Chapter 6 — Troubleshooting</a></li>
+            </ul>
+
+            <h2 id="chapter-1" class="prose-headings flex items-center gap-3"><span class="material-symbols-outlined text-vivi-blue text-4xl">download_for_offline</span> Chapter 1 — Installation</h2>
+            <p>This chapter walks you through getting Vivi Music onto your Android device for the first time.</p>
+
+            <h3 id="sys-req">System Requirements</h3>
+            <h4>Minimum Requirements</h4>
+            <ul>
+                <li>Android 8.0 or higher</li>
+                <li>Stable internet connection for streaming</li>
+                <li>~50 MB free storage for the app</li>
+            </ul>
+            <h4>Recommended</h4>
+            <ul>
+                <li>Latest Android for higher for best performance</li>
+                <li>1 GB+ free storage if you plan to download songs offline and for caching</li>
+                <li>Headphones or a Bluetooth speaker for the best audio experience</li>
+            </ul>
+
+            <h3 id="installing">Installing Vivi Music</h3>
+            <h4>Install from GitHub (Recommended)</h4>
+            <p>Head over to the <a href="https://github.com/vivizzz007/vivi-music/releases" target="_blank" class="text-vivi-blue hover:underline">official GitHub Releases</a> page, download the latest APK file, and install it on your device.</p>
+            
+            <h4>Install from Website</h4>
+            <p>You can also download the latest version directly from the <a href="https://vivimusic.mkmdevilmi.workers.dev/" target="_blank" class="text-vivi-blue hover:underline">official Vivi Music website</a>. Tap the Download button and the APK will be downloaded to your device.</p>
+
+            <h4>Sideloading the APK</h4>
+            <p>Since Vivi Music is not available on the Google Play Store, you'll need to sideload the APK:</p>
+            <ul>
+                <li>Download the APK file from GitHub Releases or the official website.</li>
+                <li>On your Android device, go to Settings > Security and enable "Install from unknown sources" (exact path varies by device).</li>
+                <li>Open the downloaded APK file and tap Install.</li>
+                <li>Once installed, you can disable "Install from unknown sources" again for security.</li>
+            </ul>
+            
+            <div class="bg-red-500/10 border border-red-500/20 rounded-2xl p-5 my-8 flex gap-4 items-start shadow-lg">
+                <span class="material-symbols-outlined text-red-400 mt-0.5 text-2xl">warning</span>
+                <div>
+                    <strong class="text-red-400 block mb-1 text-lg">Warning</strong>
+                    <p class="text-red-200/80 m-0 leading-relaxed">Always download APKs from the official Vivi Music GitHub repository or website. Avoid third-party APK sites.</p>
+                </div>
+            </div>
+
+            <h3 id="build-differences">Build Differences: vivi.apk vs. vividroid-foss.apk</h3>
+            <p>Vivi Music is distributed in two different builds: <code>vivi.apk</code> (Official Release) and <code>vividroid-universal-foss-release.apk</code> (FOSS / IzzyOnDroid Build). It is helpful to know the differences when choosing which build to install on your device:</p>
+            <ul>
+                <li><strong>vivi.apk (Official Build)</strong>:
+                    <ul>
+                        <li>Includes a convenient <strong>in-built auto-updater</strong> and the option to receive <strong>beta/nightly updates</strong> directly within the app itself.</li>
+                        <li>Supports the <strong>Google Cast (Chromecast)</strong> option, letting you stream music directly to Cast-enabled TV displays and smart speakers.</li>
+                    </ul>
+                </li>
+                <li><strong>vividroid-universal-foss-release.apk (IzzyOnDroid / FOSS Build)</strong>:
+                    <ul>
+                        <li>Distributed on the IzzyOnDroid FOSS repository. Due to the strict guidelines of FOSS repositories, this build is <strong>not allowed to implement in-built updaters</strong> or request request-install-packages/install permission on your device. All updates must be managed through the IzzyOnDroid client.</li>
+                        <li>Google Cast / Chromecast support is excluded from this build as the Google Play Services Cast API is closed-source and not compatible with pure FOSS requirements.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3 id="first-launch">First Launch</h3>
+            <h4>Permissions Explained</h4>
+            <p>Vivi Music will request the following permissions:</p>
+            <ul>
+                <li><strong>Notifications</strong> — needed to show playback controls and update alerts</li>
+                <li><strong>Nearby Devices</strong> — required to show Nearby devices and Volume section</li>
+                <li><strong>Microphone</strong> — When using identify song feature</li>
+            </ul>
+            
+            <h4>Account Creation or Sign-in</h4>
+            <p>You can sign in using your Google account (which connects to YouTube Music) or use a login token. You can also explore the app without signing in, though some features like syncing and personalised recommendations will be unavailable.</p>
+
+            <h3 id="updating">Updating Vivi Music</h3>
+            <h4>Automatic Update Check</h4>
+            <p>Vivi Music checks for updates automatically when you open the Update Settings screen. You can toggle this off if you prefer to check manually.</p>
+            
+            <h4>Manual Update Steps</h4>
+            <p>Go to Settings > Update Settings. If a new version is available, tap the update option to download and install it. You can also view the Changelog and Commits from this screen to see what changed.</p>
+            
+            <h4>Beta Updates</h4>
+            <p>Want early access to new features? Enable Beta Updates in Settings > Update Settings. Beta versions include nightly versions which have been tested by testers and have been committed to github and which may or might not be in new updates.</p>
+            
+            <div class="bg-vivi-blue/10 border border-vivi-blue/20 rounded-2xl p-5 my-8 flex gap-4 items-start shadow-lg">
+                <span class="material-symbols-outlined text-vivi-blue mt-0.5 text-2xl">lightbulb</span>
+                <div>
+                    <strong class="text-vivi-blue block mb-1 text-lg">Tip</strong>
+                    <p class="text-vivi-blue/80 m-0 leading-relaxed">Sometimes stable can break due to problems with youtube servers, so using nightly can help in getting updates faster to fix the issues caused rather than waiting for a whole new stable update.</p>
+                </div>
+            </div>
+
+            <h2 id="chapter-2" class="prose-headings flex items-center gap-3"><span class="material-symbols-outlined text-vivi-blue text-4xl">tune</span> Chapter 2 — Setting Up</h2>
+            <p>This chapter covers everything in the Settings section of Vivi Music. Each section below maps directly to a settings screen in the app.</p>
+
+            <h3 id="account">Account & Profile</h3>
+            <p>Access this screen from Settings > Account. This is where you manage how you're signed in and how your library syncs.</p>
+            
+            <h4>Signing in with Google / YouTube Music</h4>
+            <p>Tap your profile or the Account option in Settings. Choose "Sign in with Google" to connect your Google account, which also links your YouTube Music library. Your liked songs, playlists, and recommendations will sync automatically.</p>
+            
+            <h4>Login with Token</h4>
+            <p>If you prefer not to use Google sign-in, Vivi Music supports token-based login. Go to Settings > Account and tap "Tap to show token" to view or enter your login token. This is useful for advanced users or alternative account setups.</p>
+
+            <div class="bg-red-500/10 border border-red-500/20 rounded-2xl p-5 my-8 flex gap-4 items-start shadow-lg">
+                <span class="material-symbols-outlined text-red-400 mt-0.5 text-2xl">privacy_tip</span>
+                <div>
+                    <strong class="text-red-400 block mb-1 text-lg">Security Warning</strong>
+                    <p class="text-red-200/80 m-0 leading-relaxed">Keep your token private — it grants full access to your account.</p>
+                </div>
+            </div>
+
+            <h4>More Content</h4>
+            <p>When enabled, this toggle unlocks additional content beyond the standard catalogue — including region-restricted tracks and extended library access.</p>
+            
+            <h4>Auto Sync with Account</h4>
+            <p>When turned on, Vivi Music automatically keeps your library, liked songs, and playlists in sync with your connected account. Disable this if you prefer manual control or want to save data.</p>
+            
+            <h4>Integrations</h4>
+            <p>Vivi Music supports two integrations, accessible from Settings > Account > Integrations:</p>
+            <ul>
+                <li><strong>Discord Integration</strong> — shows your currently playing song as Discord Rich Presence status</li>
+                <li><strong>Last.fm Integration</strong> — scrobbles your listening history to your Last.fm profile</li>
+            </ul>
+            <p>Tap either integration to configure it with your account credentials.</p>
+            
+            <h4>Logging Out</h4>
+            <p>Tap the "Log out" button next to your username on the Account screen. You will be signed out of your Google / YouTube Music account. Your local downloads and settings are not deleted.</p>
+            
+            <div class="bg-surface border border-white/10 rounded-2xl p-5 my-8 flex gap-4 items-start shadow-lg">
+                <span class="material-symbols-outlined text-on-surface-variant mt-0.5 text-2xl">info</span>
+                <div>
+                    <strong class="text-white block mb-1 text-lg">Note</strong>
+                    <p class="text-on-surface-variant m-0 leading-relaxed">Logging out stops auto-sync. Your downloaded songs remain on your device.</p>
+                </div>
+            </div>
+
+            <h3 id="player-audio">Player & Audio</h3>
+            <p>Access this from Settings > Player and audio. This is the most detailed settings screen in the app, covering everything from streaming quality to queue behaviour.</p>
+            
+            <h4>Audio Quality & JioSaavn</h4>
+            <p>Set your preferred streaming quality under Audio quality. Higher quality uses more data. JioSaavn quality can be set separately for JioSaavn-sourced tracks — the recommended setting for best quality is 320 kbps.</p>
+            
+            <h4>Player Settings</h4>
+            <ul>
+                <li><strong>Crossfade</strong> — Smoothly blends between songs instead of a hard cut.</li>
+                <li><strong>Crossfade duration</strong> — Controls how many seconds the crossfade transition lasts.</li>
+                <li><strong>Disable for gapless albums</strong> — Skips crossfade on albums that are intended to play without gaps.</li>
+                <li><strong>History duration</strong> — Controls how many recent songs are kept in your listen history.</li>
+                <li><strong>Skip silence</strong> — Fast-forwards through silent parts of songs.</li>
+                <li><strong>Instantly skip silence</strong> — Jumps ahead during silent moments instead of speeding through them.</li>
+                <li><strong>Audio normalization</strong> — Keeps all tracks at a consistent volume level.</li>
+                <li><strong>Enable offload</strong> — Offloads audio processing to hardware. Note: this is automatically disabled when crossfade is active.</li>
+                <li><strong>Google Cast</strong> — Enables casting audio to Chromecast and Cast-enabled devices.</li>
+                <li><strong>Progressive seek</strong> — Each seek action adds 5 extra seconds incrementally.</li>
+                <li><strong>ViviEqualizer</strong> — Opens the pro-grade built-in equalizer for custom audio tuning.</li>
+            </ul>
+            
+            <h4>Queue Settings</h4>
+            <ul>
+                <li><strong>Persistent queue</strong> — Restores your last queue when the app starts.</li>
+                <li><strong>Auto load more songs</strong> — Automatically adds more songs when the queue reaches the end.</li>
+                <li><strong>Disable load more when repeat all</strong> — Prevents auto-loading when repeat all mode is active.</li>
+                <li><strong>Auto download on like</strong> — Automatically downloads a song when you like it.</li>
+                <li><strong>Enable similar content</strong> — Adds similar songs when the queue runs out.</li>
+                <li><strong>Persistent shuffle</strong> — Keeps shuffle enabled when starting new songs or playlists.</li>
+                <li><strong>Remember shuffle and repeat</strong> — Restores your shuffle and repeat mode when restarting the app.</li>
+                <li><strong>Shuffle playlist/album first</strong> — Plays all tracks from the original playlist or album before adding similar content.</li>
+                <li><strong>Prevent duplicate tracks</strong> — Removes a track from its previous position in the queue when it's re-added.</li>
+                <li><strong>Auto skip on error</strong> — Automatically skips to the next song if a track fails to load.</li>
+            </ul>
+            
+            <h4>Misc Settings</h4>
+            <ul>
+                <li><strong>Stop music on task clear</strong> — Stops playback when you swipe the app away from the recents screen.</li>
+                <li><strong>Pause when media is muted</strong> — Pauses playback when your device volume is muted.</li>
+                <li><strong>Resume on Bluetooth connect</strong> — Resumes music automatically when a Bluetooth device connects.</li>
+                <li><strong>Keep screen on when expanded</strong> — Keeps the screen awake while the player is in full-screen view.</li>
+            </ul>
+
+            <h3 id="appearance">Appearance</h3>
+            <p>Access this from Settings > Appearance. This is one of the most detailed settings screens in the app, covering everything from the overall theme and colour palette to the player layout, lyrics styling, and navigation behaviour.</p>
+            
+            <h4>Theme</h4>
+            <p>Vivi Music defaults to Material theming, which follows your device’s system-wide dark or light mode automatically. Tap Theme to customise it according to your preference — you can lock it to dark, lock it to light, or keep it on auto to follow the system. You can also enable a high refresh rate option that forces the display to run at the highest rate your device supports, such as 120Hz, for smoother animations throughout the app.</p>
+
+            <h4>Mini-Player</h4>
+            <p>This section controls the appearance and behaviour of the mini-player bar at the bottom of the screen.</p>
+            <ul>
+                <li><strong>New mini player design</strong> — Switches to the updated mini-player layout with a refreshed visual style.</li>
+                <li><strong>Pure black mini-player</strong> — Forces a true #000000 black background on the mini-player bar. Ideal for AMOLED screens.</li>
+                <li><strong>Mini-player background style</strong> — Controls the visual treatment behind the mini-player. Options are:
+                    <ol>
+                        <li>Follow theme</li>
+                        <li>Gradient, Blur</li>
+                        <li>Glow animated</li>
+                        <li>Live Mesh</li>
+                    </ol>
+                    Live Mesh is the most visually dynamic option, generating an animated mesh background that reacts to the current song’s album art colours.
+                </li>
+                <li><strong>Mini player swipe sensitivity</strong> — A slider to control how easily a swipe gesture on the mini-player registers. Adjust this if you find the mini-player expanding too easily or not easily enough.</li>
+            </ul>
+
+            <h4>Player</h4>
+            <p>This section controls the full-screen player’s look and feel.</p>
+            <ul>
+                <li><strong>New player design</strong> — Toggles the updated full-screen player design. When off, the old player layout is used.</li>
+                <li><strong>Show audio quality badge</strong> — Displays a small badge on the player indicating the current stream’s audio quality, such as High, Low, or Auto. Useful for quickly confirming which quality tier is being used for the currently playing track.</li>
+                <li><strong>Player background style</strong> — Controls the visual treatment behind the full-screen player. Available styles are:
+                    <ol>
+                        <li>Follow theme</li>
+                        <li>Gradient</li>
+                        <li>Blur</li>
+                        <li>Glow animated</li>
+                        <li>Apple Music</li>
+                        <li>Live Mesh</li>
+                    </ol>
+                </li>
+                <li><strong>Hide player thumbnail</strong> — Replaces the album artwork in the full-screen player with the Vivi Music app logo.</li>
+                <li><strong>Thumbnail corner radius</strong> — Adjusts how rounded the corners of the album art thumbnail appear in the player. Measured in dp.</li>
+                <li><strong>Crop album art</strong> — Forces a square aspect ratio by cropping video thumbnails. Useful when YouTube video thumbnails appear with letterboxing in the player.</li>
+                <li><strong>Player button colors</strong> — Controls the colour applied to playback control buttons in the player. Options are Default, Primary color, and Tertiary color — each pulling from the current Material theme palette.</li>
+                <li><strong>Player slider style</strong> — Changes the visual shape of the seek bar in the player. Four styles are available:
+                    <ol>
+                        <li>Default (standard thumb with track)</li>
+                        <li>Wavy (a fluid wave-shaped track)</li>
+                        <li>Slim (a thinner, minimalist bar)</li>
+                        <li>Squiggly (an animated squiggle that adds character to the seek bar)</li>
+                    </ol>
+                </li>
+                <li><strong>Enable swipe to change song</strong> — Allows swiping left or right on the album art in the full-screen player to skip to the previous or next track.</li>
+                <li><strong>Rotating thumbnail</strong> — Adds a slow spinning animation to the album art thumbnail while a song is playing.</li>
+                <li><strong>Show comment button</strong> — Shows a button in the player queue to view YouTube comments for the current track.</li>
+            </ul>
+
+            <h4>Canvas</h4>
+            <p>Canvas replaces the static album artwork in the player with a looping animated video when one is available for the currently playing song. This is similar to Spotify Canvas. It is a visually impressive feature but does consume additional data, so consider disabling it if you are on a limited mobile data plan.</p>
+            <p>When Use canvas is enabled, you can choose a canvas source:</p>
+            <ul>
+                <li><strong>Auto</strong> — Tries Apple Music first, then falls back to ViviMusic and Tidal. Picks the best available match automatically.</li>
+                <li><strong>Apple Music</strong> — Uses Apple Music’s animated visuals exclusively. Only shows a canvas if Apple Music has one for the playing song.</li>
+                <li><strong>ViviMusic</strong> — Uses the ViviMusic curated canvas library exclusively. Only shows a canvas if one has been added for the playing song.</li>
+                <li><strong>Tidal</strong> — Uses Tidal’s animated visuals exclusively. Only shows a canvas if Tidal has one for the playing song.</li>
+            </ul>
+
+            <h4>Lyrics</h4>
+            <p>This section controls every visual aspect of the lyrics display in the full-screen player.</p>
+            <ul>
+                <li><strong>Lyrics text position</strong> — Sets the horizontal alignment of lyrics text. Options include Left and Centre.</li>
+                <li><strong>Word-by-word animation style</strong> — Controls how individual words are highlighted as they are sung. Available styles are:
+                    <div class="grid grid-cols-2 gap-x-4">
+                        <ol>
+                            <li>None</li>
+                            <li>Fade</li>
+                            <li>Glow</li>
+                            <li>Slide</li>
+                            <li>Karaoke</li>
+                        </ol>
+                        <ol start="6">
+                            <li>Apple Music</li>
+                            <li>Apple Music V2 (Letter by Letter)</li>
+                            <li>Vivimusic (Fluid)</li>
+                            <li>Lyrics V2 (Fluid)</li>
+                            <li>MetroLyrics</li>
+                        </ol>
+                    </div>
+                    <p class="mt-4">Vivimusic (Fluid) is the default and produces a smooth flowing highlight that closely follows the vocal timing.</p>
+                </li>
+                <li><strong>Enable glowing lyrics effect</strong> — Adds a glowing animation and bounce effect to the currently active lyrics line.</li>
+                <li><strong>Apple Music lyrics blur</strong> — Applies a blur to inactive lyrics lines while keeping the current line sharp, mimicking the focus effect used in Apple Music’s lyrics view.</li>
+                <li><strong>Standard lyrics blur</strong> — An alternative blur mode for inactive lyrics lines. Similar to Apple Music lyrics blur but with a different intensity and transition style.</li>
+                <li><strong>Lyrics text size</strong> — Sets the font size of lyrics text in sp (scale-independent pixels).</li>
+                <li><strong>Lyrics line spacing</strong> — Controls the vertical gap between lyrics lines, expressed as a multiplier (e.g. 1.3x).</li>
+                <li><strong>Change lyrics on click</strong> — When enabled, tapping a lyrics line seeks the track to that timestamp.</li>
+                <li><strong>Auto scroll lyrics</strong> — Automatically keeps the current lyrics line centred on screen as the song progresses.</li>
+                <li><strong>Swipe to change song (lyrics view)</strong> — Allows swiping left or right on the artist and song name section in full-screen lyrics view to change the song.</li>
+                <li><strong>Show play/pause on thumbnail</strong> — Shows a play/pause button overlay on the song thumbnail in the full-screen lyrics view.</li>
+            </ul>
+
+            <h4>Misc</h4>
+            <p>General navigation and layout options.</p>
+            <ul>
+                <li><strong>Default open tab</strong> — Chooses which tab the app opens to on launch. Defaults to Home.</li>
+                <li><strong>Change default library chip</strong> — Sets which filter chip is selected by default when you open the Library tab.</li>
+                <li><strong>Swipe song to add to queue or play next</strong> — Enables swipe gestures on song rows in lists — swipe left to add to queue, swipe right to play next.</li>
+                <li><strong>Swipe song to remove from playlist</strong> — Enables a swipe gesture inside playlists to remove a song from that playlist.</li>
+                <li><strong>Slim bottom navigation bar</strong> — Reduces the height of the bottom navigation bar for a more compact look.</li>
+                <li><strong>Listen Together in top bar</strong> — Shows the Listen Together shortcut in the top app bar instead of in the bottom navigation bar.</li>
+                <li><strong>Grid cell size</strong> — Controls the size of items in grid-view screens like Albums and Artists.</li>
+                <li><strong>Display density</strong> — Scales the overall UI density as a percentage. Native (100%) matches your device’s default. Reducing this makes the interface more compact; increasing it makes elements larger.</li>
+            </ul>
+
+            <h4>Auto Playlists</h4>
+            <p>Controls which automatically generated playlists appear in your Library. Toggle any of the following on or off to show or hide them: Liked, Downloaded, Top, Cached, and Uploaded.</p>
+
+            <h3 id="listen-together">Listen Together</h3>
+            <p>Access from the main menu > Together. This feature lets you listen to music in real-time with friends. One person creates a room (host) and others join using a room code.</p>
+            
+            <h4>Creating a Room (Host)</h4>
+            <ul>
+                <li>Open the Together screen from the main menu.</li>
+                <li>Enter your username in the Username field.</li>
+                <li>Tap Connect — a room code will be generated.</li>
+                <li>Share the room code with your friends.</li>
+            </ul>
+            
+            <h4>Joining a Room</h4>
+            <ul>
+                <li>Open the Together screen.</li>
+                <li>Enter your username and the room code you received.</li>
+                <li>Tap Connect to join the session.</li>
+            </ul>
+            
+            <h4>Listen Together Settings</h4>
+            <p>Access from Settings > Together > Settings.</p>
+            <ul>
+                <li><strong>Blocked users</strong> — View and manage users you have blocked from your rooms.</li>
+                <li><strong>Server URL</strong> — The sync server used for real-time listening. Defaults to Hugging Face Sync – Global.</li>
+                <li><strong>Username</strong> — Your display name shown to others in the room.</li>
+                <li><strong>Auto-approve join requests</strong> — Automatically lets people in without requiring manual approval.</li>
+                <li><strong>Sync host volume</strong> — Guests follow the host's volume level.</li>
+                <li><strong>Smart Network Resync</strong> — Automatically catches up with the host after a connection drop.</li>
+                <li><strong>View logs</strong> — Displays raw connection and message logs for debugging.</li>
+            </ul>
+
+            <h3 id="ai-lyrics">AI Lyrics Translation</h3>
+            <p>Access from Settings > AI Lyrics Translation. This feature uses an AI model to translate song lyrics into your chosen language in real-time while you listen.</p>
+            
+            <h4>Choosing a Provider</h4>
+            <p>The default provider is OpenRouter, which gives access to a wide range of AI models. Tap Provider to see available options and select one.</p>
+            
+            <h4>Setting Your API Key</h4>
+            <p>To use AI lyrics translation, you need an API key from your chosen provider. Tap "API Key" and enter your key. Without a key, translation will not work.</p>
+            
+            <div class="bg-surface border border-white/10 rounded-2xl p-5 my-8 flex gap-4 items-start shadow-lg">
+                <span class="material-symbols-outlined text-on-surface-variant mt-0.5 text-2xl">privacy_tip</span>
+                <div>
+                    <strong class="text-white block mb-1 text-lg">Privacy Note</strong>
+                    <p class="text-on-surface-variant m-0 leading-relaxed">Your API key is stored locally on your device and is never shared.</p>
+                </div>
+            </div>
+            
+            <h4>Choosing a Model</h4>
+            <p>The default model is google/gemini-2.5-flash-lite, which is fast and free-tier friendly. You can change this to any model available through your provider.</p>
+            
+            <h4>Translation Mode</h4>
+            <p>Two modes are available — <strong>Translation</strong> converts lyrics to another language, while <strong>Transliteration</strong> converts the script (for example, converting Japanese lyrics to Roman letters while preserving the original pronunciation). Select whichever suits your needs.</p>
+            
+            <h4>Target Language</h4>
+            <p>Choose the language you want lyrics translated into. The default is English (US).</p>
+
+            <h3 id="privacy">Privacy & Storage</h3>
+            <h4>Privacy</h4>
+            <p>Access from Settings > Privacy. Control what Vivi Music remembers about your listening habits.</p>
+            <ul>
+                <li><strong>Listen History</strong>
+                    <ul>
+                        <li><strong>Pause listen history</strong> — Stops recording the songs you play.</li>
+                        <li><strong>Clear listen history</strong> — Permanently deletes all recorded listening history.</li>
+                    </ul>
+                </li>
+                <li><strong>Search History</strong>
+                    <ul>
+                        <li><strong>Pause search history</strong> — Stops saving your search queries.</li>
+                        <li><strong>Clear search history</strong> — Permanently deletes all saved search queries.</li>
+                    </ul>
+                </li>
+                <li><strong>Misc</strong>
+                    <ul>
+                        <li><strong>Disable screenshot</strong> — Prevents screenshots and hides the app in the Recents screen when enabled.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Storage</h4>
+            <p>Access from Settings > Storage. Manage how much space Vivi Music uses on your device.</p>
+            <ul>
+                <li><strong>Downloads</strong>
+                    <ul>
+                        <li><strong>Downloaded songs</strong> — Shows the total size of your offline downloads.</li>
+                        <li><strong>Clear all downloads</strong> — Deletes all downloaded songs from your device.</li>
+                    </ul>
+                </li>
+                <li><strong>Song Cache</strong>
+                    <ul>
+                        <li><strong>Max song cache size</strong> — Limits how much space songs can use in the cache.</li>
+                        <li><strong>Clear song cache</strong> — Deletes cached songs to free up space.</li>
+                    </ul>
+                </li>
+                <li><strong>Image Cache</strong>
+                    <ul>
+                        <li><strong>Max image cache size</strong> — Limits how much space album art and images can use.</li>
+                        <li><strong>Clear image cache</strong> — Deletes cached images to free up space.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Backup and Restore</h4>
+            <p>Access from Settings > Backup and restore. Use this screen to protect your playlists and settings, or to migrate your data to a new device.</p>
+            <ul>
+                <li><strong>Backup</strong>: Tap Backup to create a snapshot of your current library, liked songs, playlists, and settings. The backup file is saved to your device storage and can be shared or copied elsewhere.</li>
+                <li><strong>Restore</strong>: Tap Restore and select a previously created backup file to bring your data back. This will overwrite your current library and settings with the backup.</li>
+            </ul>
+            
+            <h4>Import Playlists</h4>
+            <p>Vivi Music supports importing playlists in two formats:</p>
+            <ul>
+                <li>Import a "m3u" playlist — standard format used by most music apps and players</li>
+                <li>Import a "csv" playlist — spreadsheet-style format listing track details</li>
+            </ul>
+
+            <h2 id="chapter-3" class="prose-headings flex items-center gap-3"><span class="material-symbols-outlined text-vivi-blue text-4xl">headphones</span> Chapter 3 — Using the App</h2>
+            <p>This chapter covers day-to-day use: searching for music, managing your queue, and getting the most out of the player.</p>
+
+            <h3 id="searching">Searching and Browsing</h3>
+            <h4>Search</h4>
+            <p>Tap the search icon to find songs, albums, artists, or playlists. Results pull from YouTube Music. Tap any result to play it immediately or long-press to get more options like adding to a playlist or downloading.</p>
+            
+            <h4>Home Screen</h4>
+            <p>The home screen surfaces personalised recommendations, recently played items, and curated mixes based on your listening history. These update dynamically as you use the app.</p>
+
+            <h3 id="playback">Playback Controls</h3>
+            <h4>Mini Player</h4>
+            <p>Whenever a song is playing, the mini player appears at the bottom of the screen. Tap it to expand to the full player view. From the mini player you can play/pause, skip to the next track, and like the current song.</p>
+            
+            <h4>Full Player</h4>
+            <p>The full player shows the album art, track title, artist, and the full set of controls — seek bar, previous, play/pause, next, shuffle, and repeat. The overflow menu (three dots) gives access to additional actions like adding to a playlist, viewing the queue, and sleep timer.</p>
+            
+            <h4>Shuffle, Repeat, and Sleep Timer</h4>
+            <ul>
+                <li><strong>Shuffle</strong> — randomises your queue order</li>
+                <li><strong>Repeat one</strong> — loops the current song</li>
+                <li><strong>Repeat all</strong> — loops the full queue</li>
+                <li><strong>Sleep timer</strong> — stops playback after a set time (find this in the player overflow menu)</li>
+            </ul>
+
+            <h3 id="playlists">Playlists & Library</h3>
+            <h4>Create and Edit Playlists</h4>
+            <p>Long-press any song and select "Add to playlist" to add it to an existing playlist or create a new one. Tap a playlist to open it, then use the edit button to rename, reorder, or remove songs.</p>
+            
+            <h4>Liked Songs and Followed Artists</h4>
+            <p>Tap the heart icon on any song to like it. Liked songs appear in your Library. Tap Follow on an artist page to follow them and see their new releases on your home screen.</p>
+
+            <h2 id="chapter-5" class="prose-headings flex items-center gap-3"><span class="material-symbols-outlined text-vivi-blue text-4xl">integration_instructions</span> Chapter 5 — For Developers & Contributors</h2>
+            <p>Vivi Music is open-source and welcomes contributions from the community. This chapter covers how to get involved.</p>
+
+            <h3 id="architecture">Architecture Overview</h3>
+            <p>Vivi Music is an Android app built in Kotlin. It uses a modular architecture with separate components for playback, UI, networking, and local storage. The app integrates with multiple streaming APIs and supports plugin-style integrations for Discord and Last.fm.</p>
+            
+            <h4>Tech Stack</h4>
+            <ul>
+                <li><strong>Language:</strong> Kotlin</li>
+                <li><strong>UI:</strong> Jetpack Compose</li>
+                <li><strong>Playback:</strong> ExoPlayer / Media3</li>
+                <li><strong>Networking:</strong> Ktor / Retrofit</li>
+                <li><strong>AI features:</strong> OpenRouter API</li>
+                <li><strong>Sync server:</strong> Hugging Face Spaces (Listen Together)</li>
+            </ul>
+
+            <h3 id="contributing">Contributing to Vivi Music</h3>
+            <h4>Code of Conduct</h4>
+            <p>Be respectful, constructive, and patient. Contributions of all sizes are welcome — from fixing a typo to building a new feature.</p>
+            
+            <h4>Pull Request Process</h4>
+            <ol>
+                <li>Fork the repository on GitHub.</li>
+                <li>Create a new branch for your feature or fix.</li>
+                <li>Make your changes and test thoroughly.</li>
+                <li>Submit a pull request with a clear description of what changed and why.</li>
+            </ol>
+            
+            <h4>Translation Guide</h4>
+            <p>Want to help translate Vivi Music into your language? Translation files are located in the app's res/values/ directory. Submit translated strings as a pull request or contact the developer via Telegram.</p>
+            
+            <h4>Community & Links</h4>
+            <ul>
+                <li><strong>GitHub Repository</strong> — <a href="https://github.com/vivizzz007/vivi-music">https://github.com/vivizzz007/vivi-music</a></li>
+                <li><strong>Telegram</strong> — <a href="https://t.me/vivimusicapp">t.me/vivimusicapp</a></li>
+                <li><strong>Website</strong> — <a href="https://vivimusic.mkmdevilmi.workers.dev/">https://vivimusic.mkmdevilmi.workers.dev/</a></li>
+            </ul>
+
+            <h2 id="chapter-6" class="prose-headings flex items-center gap-3"><span class="material-symbols-outlined text-vivi-blue text-4xl">handyman</span> Chapter 6 — Troubleshooting</h2>
+            <p>If something isn't working as expected, this chapter covers the most common issues and how to fix them. For anything not listed here, reach out via Telegram or GitHub Issues.</p>
+
+            <h3 id="migration">Migration Issues</h3>
+            <p>If you are migrating from version 5.0.3, please <strong>clear app data</strong> before using the app, otherwise it will keep crashing.</p>
+
+            <h3 id="playback-issues">Playback Issues</h3>
+            <h4>Music doesn't play</h4>
+            <ul>
+                <li>Check your internet connection — switch between Wi-Fi and mobile data.</li>
+                <li>Force stop the app and check.</li>
+                <li>Go to Settings → Content → switch to IPv4 or IPv6 (make sure proxy is enabled).</li>
+                <li>Clear app data and cache.</li>
+            </ul>
+            
+            <h4>Songs Won't Load</h4>
+            <ul>
+                <li>Check if the track is available in your region.</li>
+                <li>Use a VPN.</li>
+                <li>Force-stop the app and reopen it.</li>
+            </ul>
+
+            <h3 id="login-issues">Login & Account Issues</h3>
+            <h4>Can't Sign In</h4>
+            <p>Vivi Music uses Google sign-in. If you can't sign in, make sure your Google account is working by trying to sign in at google.com. If you use token login, go to Settings > Account > Tap to show token and verify your token is correct.</p>
+            
+            <h4>Account Not Syncing</h4>
+            <ul>
+                <li>Go to Settings > Account and make sure "Auto sync with account" is enabled.</li>
+                <li>Try logging out and logging back in.</li>
+                <li>Check that you have a stable internet connection.</li>
+            </ul>
+
+            <h3 id="download-issues">Download & Offline Issues</h3>
+            <h4>Download Stuck or Failed</h4>
+            <ul>
+                <li>Check your available storage in Settings > Storage.</li>
+                <li>Tap the download again to retry.</li>
+                <li>Try clearing the song cache and downloading again.</li>
+            </ul>
+            
+            <h4>Offline Songs Not Appearing</h4>
+            <ul>
+                <li>Make sure Offline mode is not accidentally enabled — it hides undownloaded content.</li>
+                <li>Go to Settings > Storage and check that Downloaded songs shows a size greater than 0 B.</li>
+            </ul>
+
+            <h3 id="app-crashes">App Crashes & Performance</h3>
+            <h4>App Freezing or Crashing</h4>
+            <ul>
+                <li>Force-stop the app from Android Settings > Apps > Vivi Music.</li>
+                <li>Clear the cache and data from the same screen.</li>
+                <li>Reopen the app.</li>
+                <li>If crashes persist, try uninstalling and reinstalling the app.</li>
+                <li>Report the crash log in telegram group.</li>
+            </ul>
+            
+            <h4>Reporting a Bug</h4>
+            <p>Found a repeatable bug? Open an issue on the Vivi Music GitHub repository. Include your Android version, Vivi Music version (found in Settings > About), and a description of what happened and how to reproduce it.</p>
+            
+            <div class="bg-surface border border-white/10 rounded-2xl p-5 my-8 flex gap-4 items-start shadow-lg">
+                <span class="material-symbols-outlined text-on-surface-variant mt-0.5 text-2xl">info</span>
+                <div>
+                    <strong class="text-white block mb-1 text-lg">Tip</strong>
+                    <p class="text-on-surface-variant m-0 leading-relaxed">You can also report in Telegram when reporting bugs. If above solutions don't work please use a logcat reader and then capture logs to share.</p>
+                </div>
+            </div>
+
+            <h3 id="contact-support">Contact & Support</h3>
+            <p>Need help or want to get involved? Reach out through any of these channels:</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-6">
+                <a href="https://t.me/vivimusicapp" target="_blank" class="bg-[#2AABEE]/10 border border-[#2AABEE]/20 rounded-2xl p-5 flex flex-col gap-3 hover:bg-[#2AABEE]/20 hover:border-[#2AABEE]/30 transition-all group">
+                    <span class="material-symbols-outlined text-[#2AABEE] text-2xl">send</span>
+                    <strong class="text-white text-sm">Telegram</strong>
+                    <p class="text-on-surface-variant text-xs m-0 leading-relaxed">Join the community for quick help, updates, and announcements.</p>
+                </a>
+                <a href="https://github.com/vivizzz007/vivi-music/issues" target="_blank" class="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col gap-3 hover:bg-white/10 hover:border-white/20 transition-all group">
+                    <span class="material-symbols-outlined text-vivi-blue text-2xl">bug_report</span>
+                    <strong class="text-white text-sm">GitHub Issues</strong>
+                    <p class="text-on-surface-variant text-xs m-0 leading-relaxed">Report bugs, request features, or track development progress.</p>
+                </a>
+                <a href="https://vivimusic.mkmdevilmi.workers.dev/" target="_blank" class="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col gap-3 hover:bg-white/10 hover:border-white/20 transition-all group">
+                    <span class="material-symbols-outlined text-vivi-blue text-2xl">public</span>
+                    <strong class="text-white text-sm">Website</strong>
+                    <p class="text-on-surface-variant text-xs m-0 leading-relaxed">Visit the official Vivi Music site for downloads and information.</p>
+                </a>
+            </div>
+            <p class="text-sm italic opacity-70">Tip: The Telegram community is usually the fastest way to get help.</p>
+        </div>
+        
+        <!-- Mobile/Main Content Footer Credit -->
+        <div class="mt-12 pt-8 border-t border-white/10 text-center xl:hidden">
+            <p class="text-xs text-on-surface-variant font-geist opacity-80 flex items-center justify-center gap-1.5">
+                Made with <span class="material-symbols-outlined text-red-500 text-[14px]">favorite</span> by <span class="text-white font-medium">Sharon Thomas</span>
+            </p>
+        </div>
+    </main>
+
+    <!-- Right Sidebar Wrapper -->
+    <div class="hidden xl:block w-56 shrink-0 relative">
+      <aside class="sidebar-scroll py-6 pl-4 border-l border-white/5" style="position: sticky; top: 96px; height: calc(100vh - 96px); width: 14rem; overflow-y: auto; overscroll-behavior: contain;">
+        <div class="font-bold text-white mb-6 text-sm uppercase tracking-wider">On this page</div>
+        <ul class="flex flex-col gap-3 text-sm text-on-surface-variant font-geist">
+          <li><a href="#welcome" class="hover:text-white transition-colors">Welcome to Vivi Music</a></li>
+          <li><a href="#chapter-1" class="hover:text-white transition-colors">Installation</a></li>
+          <li><a href="#chapter-2" class="hover:text-white transition-colors">Setting Up</a></li>
+          <li><a href="#chapter-3" class="hover:text-white transition-colors">Using the App</a></li>
+          <li><a href="#chapter-5" class="hover:text-white transition-colors">Developers & Contributors</a></li>
+          <li><a href="#chapter-6" class="hover:text-white transition-colors">Troubleshooting</a></li>
+        </ul>
+        
+        <!-- Helpful links card -->
+        <div class="mt-12 bg-surface-lowest border border-white/10 rounded-2xl p-5">
+          <div class="font-bold text-white mb-4 text-xs uppercase tracking-wider">Helpful Links</div>
+          <div class="flex flex-col gap-3 text-sm">
+              <a href="https://github.com/vivizzz007/vivi-music/releases" target="_blank" class="flex items-center gap-2 text-vivi-blue hover:text-white transition-colors">
+                  <span class="material-symbols-outlined text-[16px]">system_update</span> Releases
+              </a>
+              <a href="https://t.me/vivimusicapp" target="_blank" class="flex items-center gap-2 text-vivi-blue hover:text-white transition-colors">
+                  <span class="material-symbols-outlined text-[16px]">forum</span> Community
+              </a>
+              <a href="https://github.com/vivizzz007/vivi-music/issues" target="_blank" class="flex items-center gap-2 text-vivi-blue hover:text-white transition-colors">
+                  <span class="material-symbols-outlined text-[16px]">bug_report</span> Report an Issue
+              </a>
+          </div>
+        </div>
+        
+        <!-- Sidebar Footer Credit -->
+        <div class="mt-8 text-center px-4">
+            <p class="text-xs text-on-surface-variant font-geist opacity-60 flex flex-col items-center gap-1">
+                <span>Made with <span class="material-symbols-outlined text-red-500 text-[12px] align-middle">favorite</span> by</span>
+                <span class="text-white opacity-90 font-medium">Sharon Thomas</span>
+            </p>
+        </div>
+      </aside>
+    </div>
+
+  </div>
+
+  <script src="docs.js" defer></script>
+
+</body>
+</html>
